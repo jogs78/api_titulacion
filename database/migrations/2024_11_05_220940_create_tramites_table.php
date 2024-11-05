@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('tramites', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->enum('liberacion',['aceptado','rechazado','pendiente']);
+            $table->enum('status',['iniciado','rechazado','pendiente']); #verificar que colocar en status del tramite (que puntos del tramite hay)
+            $table->enum('estado',['iniciado','rechazado','pendiente']);
+            $table->string('observaciones');
+            $table->enum('pago',['aceptado','pendiente']);
             $table->timestamps();
         });
     }

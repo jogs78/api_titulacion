@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('titulacion_opcions', function (Blueprint $table) {
+        Schema::create('validacion_solicitudes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('titulacion_opcions');
+        Schema::dropIfExists('validacion_solicitudes');
     }
 };

@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('validacion_solicituds', function (Blueprint $table) {
+        Schema::create('administrativos', function (Blueprint $table) {
             $table->id();
+            $table->string("nombre");
+            $table->string("apellido_paterno");
+            $table->string("apellido_materno");
+            $table->string("cedula_profesional");
+            $table->string("correo");
+            $table->string("profesion");
             $table->timestamps();
         });
     }
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('validacion_solicituds');
+        Schema::dropIfExists('administrativos');
     }
 };

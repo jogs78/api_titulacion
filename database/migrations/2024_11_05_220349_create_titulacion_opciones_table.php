@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documento_titulacions', function (Blueprint $table) {
+        Schema::create('titulacion_opciones', function (Blueprint $table) {
             $table->id();
+            $table->string('descriopcion');
+            $table->string('docuemtacion');
+            $table->foreignId('plan_estudios_id')->constrained('plan_estudios');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('documento_titulacions');
+        Schema::dropIfExists('titulacion_opciones');
     }
 };

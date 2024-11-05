@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('comites', function (Blueprint $table) {
             $table->id();
+            $table->string('cargo');
+            $table->foreignId('docente_id')->constrained('docentes');
+            $table->foreignId('plan_requisitos_id')->constrained('plan_requisitos');
             $table->timestamps();
         });
     }

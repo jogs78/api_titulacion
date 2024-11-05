@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actos', function (Blueprint $table) {
+        Schema::create('documento_solicitudes', function (Blueprint $table) {
             $table->id();
-            $table->enum('modalidad', ['virtual','Presencial']);
-            $table->date('fecha');
-            $table->time('hora');
-            $table->string('lugar');
-            $table->foreignId('jurado_id')->constrained('jurados');
+            $table->string('cargo');
+            $table->foreignId('docente_id')->constrained('docentes');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actos');
+        Schema::dropIfExists('documento_solicitudes');
     }
 };
