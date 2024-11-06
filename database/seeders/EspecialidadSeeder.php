@@ -15,5 +15,9 @@ class EspecialidadSeeder extends Seeder
         $nueva = new Especialidad;
         $nueva->nombre = "Tecnologias Web y Movil aplicadas al comercio electronico";
         $nueva->save();
+
+        $nueva = new Especialidad;
+        $nueva->nombre = "Base de datos";
+        $nueva->save();
     }
 }

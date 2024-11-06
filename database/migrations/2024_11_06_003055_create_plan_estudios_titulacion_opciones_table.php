@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('titulacion_opciones', function (Blueprint $table) {
+        Schema::create('plan_estudios_titulacion_opciones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->text('descripcion');
-            $table->integer('tiempo_maximo');
-            #$table->foreignId('plan_estudios_id')->constrained('plan_estudios');
+            $table->foreignId('plan_estudios_id')->constrained('plan_estudios');
+            $table->foreignId('titulacion_opcion_id')->constrained('titulacion_opciones');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('titulacion_opciones');
+        Schema::dropIfExists('plan_estudios_titulacion_opciones');
     }
 };

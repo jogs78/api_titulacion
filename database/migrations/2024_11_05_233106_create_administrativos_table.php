@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string("nombre");
             $table->string("apellido_paterno");
             $table->string("apellido_materno");
-            $table->string("cedula_profesional");
             $table->string("correo");
-            $table->string("profesion");
+            $table->string("puesto");
             $table->timestamps();
         });
     }

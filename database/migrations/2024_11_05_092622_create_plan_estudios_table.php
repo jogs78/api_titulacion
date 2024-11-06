@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('fecha_inicio');
             $table->integer("numero_creditos");
-            $table->foreignId("especialidad_id")->constrained("especialidades");
+            $table->foreignId("especialidad_id")->nullable()->default(null)->constrained("especialidades");
             $table->timestamps();
         });
     }
