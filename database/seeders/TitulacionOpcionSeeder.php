@@ -13,17 +13,25 @@ class TitulacionOpcionSeeder extends Seeder
      */
     public function run(): void
     {
+        $heredoc = <<<EOD
+    This is a multiline
+    string using Heredoc syntax
+    EOD;
         $titulacionOpciones = [
             ['nombre' => 'I TESIS PROFESIONAL', 
-            'descripcion' => 'Trabajos que deben desarrollarse utilizando 
+            'descripcion' => <<<EOD
+            Trabajos que deben desarrollarse utilizando 
             una metodologia estaleciada para la investigación básica o científica, 
-            la cual puede ser Teórico-Practica.', 
+            la cual puede ser Teórico-Practica. 
+            EOD, 
             'tiempo_maximo' => 12],
 
             ['nombre' => 'II ELABORACIÓN DE LIBROS DE TEXTO O PROTOTIPO DIDÁCTICO', 
-            'descripcion' => 'Esta opción consiste en elaborar libros de texto o prototipo didáctico que aborden los planes o 
+            'descripcion' => <<<EOD
+            Esta opción consiste en elaborar libros de texto o prototipo didáctico que aborden los planes o 
             programas de estudios vigentes en el Sistema Nacional de Institutos Tecnologicos 
-            de la Carrera Cursada por el egresado', 'tiempo_maximo' => 12],
+            de la Carrera Cursada por el egresado 
+            EOD, 'tiempo_maximo' => 12],
 
             ['nombre' => 'III PROYECTO DE INVESTIGACIÓN', 
             'descripcion' => 'Dirigida a los egresados que hayan participado en un proyecto de desarrollo científico y/o tecnológico 

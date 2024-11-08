@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('plan_requisitos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('plan_estudio_id')->constrained('plan_estudios');
             $table->string('documento_requerido');
             $table->string('descripcion');
             $table->enum('tipo', ['PDF', 'imagen', 'Fotografia']);
-            $table->foreignId('plan_estudio_id')->constrained('plan_estudios');
             $table->timestamps();
         });
     }

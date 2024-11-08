@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('opcion_requisitos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('opcion_titulacion_id')->constrained('titulacion_opciones');
             $table->string('documento_requerido');
             $table->string('descripcion');
             $table->enum('tipo', ['PDF', 'imagen', 'Fotografia']);
-            $table->foreignId('opcion_titulacion_id')->constrained('titulacion_opciones');
             $table->timestamps();
         });
     }

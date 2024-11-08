@@ -15,10 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->enum('liberacion',['aceptado','rechazado','pendiente']);
-            $table->enum('status',['iniciado','rechazado','pendiente']); #verificar que colocar en status del tramite (que puntos del tramite hay)
-            $table->enum('estado',['iniciado','rechazado','pendiente']);
+            $table->enum('status',['iniciado','rechazado','pendiente']); #Si el tramite es aceptado o rechazado
+            $table->enum('paso',['iniciado','rechazado','pendiente']); #verificar que colocar (que puntos del tramite hay)
             $table->string('observaciones');
             $table->enum('pago',['aceptado','pendiente']);
+            $table->foreignID('egresado_id')->constrained('Egresados');
+            $table->foreignId('comite_id')->constrained('comites');
+            $table->foreignId('acto_id')->constrained('actos');
+            $table->foreignId('titulacion_opciones-id')->constrained('titulacion_opciones');
             $table->timestamps();
         });
     }
