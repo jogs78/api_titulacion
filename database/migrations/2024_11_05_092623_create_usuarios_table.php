@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger("actual_id"); // quien es
             $table->string("nombre_usuario")->unique();
             $table->string("contraseña");
+            $table->string("token")->nullable()->default(null);
             $table->timestamps();
         });
     }

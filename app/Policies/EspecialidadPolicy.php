@@ -3,7 +3,7 @@ namespace App\Policies;
 use App\Models\Especialidad;
 use App\Models\Usuario;
 use Illuminate\Auth\Access\Response;
-class EspecilidadPolicy
+class EspecialidadPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -29,7 +29,7 @@ class EspecilidadPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(Usuario $usuario, Especilidad $especilidad): bool
+    public function update(Usuario $usuario, Especialidad $especilidad): bool
     {
         //
     }
@@ -43,14 +43,14 @@ class EspecilidadPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(Usuario $usuario, Especilidad $especilidad): bool
+    public function restore(Usuario $usuario, Especialidad $especilidad): bool
     {
         //
     }
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(Usuario $usuario, Especilidad $especilidad): bool
+    public function forceDelete(Usuario $usuario, Especialidad $especilidad): bool
     {
         //
     }
