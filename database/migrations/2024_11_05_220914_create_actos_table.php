@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('actos', function (Blueprint $table) {
             $table->id();
+            #$table->foreignId('jurado_id')->constrained('jurados');
             $table->enum('modalidad', ['virtual','Presencial']);
             $table->date('fecha');
             $table->time('hora');
             $table->string('lugar');
-            $table->foreignId('jurado_id')->constrained('jurados');
             $table->timestamps();
         });
     }

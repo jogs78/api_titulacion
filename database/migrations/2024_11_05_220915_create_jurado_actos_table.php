@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('validacion_titulaciones', function (Blueprint $table) {
+        Schema::create('jurado_actos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('documento_titulacion_id')->constrained('documento_titulaciones');
-            $table->string('motivo');
+            $table->foreignId('jurado_id')->constrained('jurados');
+            $table->foreignId('acto_id')->constrained('actos');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('validacion_titulaciones');
+        Schema::dropIfExists('jurado_actos');
     }
 };

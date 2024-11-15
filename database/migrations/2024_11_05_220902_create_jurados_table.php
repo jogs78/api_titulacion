@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('jurados', function (Blueprint $table) {
             $table->id();
-            $table->enum('sinodal',['presidente','secretario','Suplente']);
             $table->foreignId('docente_id')->constrained('docentes');
+            $table->enum('sinodal',['presidente','secretario','Suplente']);
             $table->timestamps();
         });
     }

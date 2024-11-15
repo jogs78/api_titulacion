@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ValidacionTitulacion extends Model
 {
     use HasFactory;
+    protected $table = 'validacion_titulaciones';
 }

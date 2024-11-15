@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('validacion_solicitudes', function (Blueprint $table) {
             $table->id();
+            $table->String('ruta');
+            $table->enum('validacion', ['pendiente', 'aceptado', 'rechazado']);
+            $table->foreignId('documento_solicitud_id')->constrained('documento_solicitudes');
+            $table->foreignId('egresado_id')->constrained('egresados');
             $table->timestamps();
         });
     }

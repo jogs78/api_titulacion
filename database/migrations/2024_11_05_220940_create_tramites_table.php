@@ -13,16 +13,19 @@ return new class extends Migration
     {
         Schema::create('tramites', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->foreignID('egresado_id')->constrained('Egresados');
+            $table->foreignId('titulacion_opciones_id')->constrained('titulacion_opciones');
+            $table->string('nombre_proyecto');
             $table->enum('liberacion',['aceptado','rechazado','pendiente']);
             $table->enum('status',['iniciado','rechazado','pendiente']); #Si el tramite es aceptado o rechazado
             $table->enum('paso',['iniciado','rechazado','pendiente']); #verificar que colocar (que puntos del tramite hay)
             $table->string('observaciones');
             $table->enum('pago',['aceptado','pendiente']);
-            $table->foreignID('egresado_id')->constrained('Egresados');
             $table->foreignId('comite_id')->constrained('comites');
             $table->foreignId('acto_id')->constrained('actos');
-            $table->foreignId('titulacion_opciones-id')->constrained('titulacion_opciones');
+            $table->foreignId('jurado_acto_id')->constrained('jurado_actos');
+
+
             $table->timestamps();
         });
     }

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('documento_titulaciones', function (Blueprint $table) {
             $table->id();
+            $table->string('ruta');
+            $table->enum('validacion', ['pendiente', 'aceptado', 'rechazado'])->default('pendiente'); // pendiente de revizar
+            $table->foreignId('opcion_requisito_id')->constrained('opcion_requisitos');
+            $table->foreignId('tramite_id')->constrained('tramites');
             $table->timestamps();
         });
     }
