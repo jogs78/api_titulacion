@@ -30,28 +30,28 @@ class UsuarioPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(usuario $usuario, Usuario $usuario): bool
+    public function update(usuario $usuario, Usuario $usuario2): bool
     {
         //
     }
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(usuario $usuario, Usuario $usuario): bool
+    public function delete(usuario $usuario, Usuario $usuario2): bool
     {
         //
     }
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(usuario $usuario, Usuario $usuario): bool
+    public function restore(usuario $usuario, Usuario $usuario2): bool
     {
         //
     }
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(usuario $usuario, Usuario $usuario): bool
+    public function forceDelete(usuario $usuario, Usuario $usuario2): bool
     {
         //
     }

@@ -22,6 +22,7 @@ class PuertaController extends Controller
             if(!$correcta)return response()->json(["Contraseña o usuario no coincide"],404);
 
             $usuario_encontrado->token = Str::random();
+            $usuario_encontrado->expiracion = time() + (1* 60 * 60);
             $usuario_encontrado->save();
 
             $usuario_actual = $usuario_encontrado->actual;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PlanEstudio;
 use App\Http\Requests\StorePlanEstudioRequest;
 use App\Http\Requests\UpdatePlanEstudioRequest;
+use Illuminate\Support\Facades\Gate;
 
 class PlanEstudioController extends Controller
 {
@@ -13,15 +14,8 @@ class PlanEstudioController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $todos = PlanEstudio::all();
+        return response()->json($todos);
     }
 
     /**
@@ -29,7 +23,12 @@ class PlanEstudioController extends Controller
      */
     public function store(StorePlanEstudioRequest $request)
     {
-        //
+        if(Gate::allows('create', PlanEstudio::class) ){
+            return response()->json(["Dando de alta",200]);
+        }else{
+            return response()->json(["No puede",403]);
+        }
+//        $this->authorize('create', PlanEstudio::class);
     }
 
     /**
@@ -45,7 +44,11 @@ class PlanEstudioController extends Controller
      */
     public function edit(PlanEstudio $planEstudio)
     {
-        //
+        if(Gate::allows('update', $planEstudio) ){
+            return response()->json(["editando",200]);
+        }else{
+            return response()->json(["No puede",403]);
+        }
     }
 
     /**

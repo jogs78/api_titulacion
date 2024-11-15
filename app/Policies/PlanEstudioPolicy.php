@@ -3,63 +3,69 @@
 namespace App\Policies;
 
 use App\Models\PlanEstudio;
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Auth\Access\Response;
 
 class PlanEstudioPolicy
 {
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the Usuario can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(Usuario $usuario): bool
     {
         //
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Determine whether the Usuario can view the model.
      */
-    public function view(User $user, PlanEstudio $planEstudio): bool
+    public function view(Usuario $usuario, PlanEstudio $planEstudio): bool
+    {
+/*
+        if($usuario->carrera == $planEstudio->carrera) return true;
+        else return false;
+*/
+    }
+
+    /**
+     * Determine whether the Usuario can create models.
+     */
+    public function create(Usuario $usuario): bool
+    {
+        if($usuario->actual_type=="App\Models\Administrativo") return true;
+        else return false;
+    }
+
+    /**
+     * Determine whether the Usuario can update the model.
+     */
+    public function update(Usuario $usuario, PlanEstudio $planEstudio): bool
+    {
+        //checar que sea administrativos
+        //checar que este activo
+        //checar que tenga los permisos
+    }
+
+    /**
+     * Determine whether the Usuario can delete the model.
+     */
+    public function delete(Usuario $usuario, PlanEstudio $planEstudio): bool
     {
         //
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the Usuario can restore the model.
      */
-    public function create(User $user): bool
+    public function restore(Usuario $usuario, PlanEstudio $planEstudio): bool
     {
         //
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Determine whether the Usuario can permanently delete the model.
      */
-    public function update(User $user, PlanEstudio $planEstudio): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     */
-    public function delete(User $user, PlanEstudio $planEstudio): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, PlanEstudio $planEstudio): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, PlanEstudio $planEstudio): bool
+    public function forceDelete(Usuario $usuario, PlanEstudio $planEstudio): bool
     {
         //
     }

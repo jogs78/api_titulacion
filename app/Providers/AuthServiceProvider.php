@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\PlanEstudio;
+use App\Policies\PlanEstudioPolicy;
+
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,6 +17,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+         'App\Models\PlanEstudio' => 'App\Policies\PlanEstudioPolicy',
+
+
     ];
 
     /**

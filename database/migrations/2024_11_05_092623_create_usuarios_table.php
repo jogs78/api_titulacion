@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("nombre_usuario")->unique();
             $table->string("contraseña");
             $table->string("token")->nullable()->default(null);
+            $table->bigInteger('expiracion', false, true)->nullable()->default(null);
             $table->timestamps();
         });
     }

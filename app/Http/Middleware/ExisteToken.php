@@ -23,8 +23,11 @@ class ExisteToken
         $token = str_replace('Bearer ', '', $authorizationHeader);
         $usuario = Usuario::where('token', $token)->first();
         if ($usuario) {
-                auth()->setUser($usuario);
-                return $next($request);
+                if($usuario->expiracion > time()){
+                    auth()->setUser($usuario);
+                    return $next($request);    
+                }
+                return response()->json(['error' => "Debe autenticar de nuevo"], 401);
         } else {
             return response()->json(['error' => "Debe autenticar primero"], 401);
         }
