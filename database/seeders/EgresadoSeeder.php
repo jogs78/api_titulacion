@@ -22,5 +22,18 @@ class EgresadoSeeder extends Seeder
         $nuevo->carrera_id = "1";
         $nuevo->plan_estudio_id = 1;
         $nuevo->save();
+
+        $nuevo = new Egresado();
+        $nuevo->nombre = "Jorge Omner";
+        $nuevo->apellido_paterno = "Arias";
+        $nuevo->apellido_materno = "Olea";
+        $nuevo->numero_control = "20270264";
+        $nuevo->correo = "L20270264@tuxtla.tecnm.mx";
+        $nuevo->telefono = "9613599215";
+        $nuevo->carrera_id = "1";
+        $nuevo->plan_estudio_id = 1;
+        $nuevo->save();
+
+
     }
 }

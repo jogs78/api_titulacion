@@ -27,5 +27,20 @@ class JuradoActoSeeder extends Seeder
         $nuevo->jurado_id = 3;
         $nuevo->acto_id = 1;
         $nuevo->save();
+
+        $nuevo = new JuradoActo();
+        $nuevo->jurado_id = 1;
+        $nuevo->acto_id = 2;
+        $nuevo->save();
+
+        $nuevo = new JuradoActo();
+        $nuevo->jurado_id = 2;
+        $nuevo->acto_id = 2;
+        $nuevo->save();
+
+        $nuevo = new JuradoActo();
+        $nuevo->jurado_id = 3;
+        $nuevo->acto_id = 2;
+        $nuevo->save();
     }
 }

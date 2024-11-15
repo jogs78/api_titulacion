@@ -21,5 +21,13 @@ class ActoSeeder extends Seeder
         $nuevo->lugar = 'Edificio I - Audiovisual';
         $nuevo->save();
 
+        $nuevo = new Acto();
+        #$nuevo->jurado_id = 1;
+        $nuevo->modalidad = 'Presencial';
+        $nuevo->fecha = '2025-01-05';
+        $nuevo->hora = '12:00:00';
+        $nuevo->lugar = 'Edificio I - Audiovisual';
+        $nuevo->save();
+
     }
 }

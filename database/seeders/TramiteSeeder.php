@@ -26,5 +26,19 @@ class TramiteSeeder extends Seeder
         $nuevo->acto_id = 1;
         $nuevo->jurado_acto_id = 1;
         $nuevo->save();
+
+        $nuevo = new Tramite();
+        $nuevo->egresado_id = 2;
+        $nuevo->titulacion_opciones_id = 11;
+        $nuevo->nombre_proyecto = 'Sistematización del seguimiento de los procesos de residencia profesional en el departamento de ingenierías.';
+        $nuevo->liberacion = 'pendiente';
+        $nuevo->status = 'pendiente';
+        $nuevo->paso = 'iniciado';
+        $nuevo->observaciones = 'Ninguna';
+        $nuevo->pago = 'pendiente';
+        $nuevo->comite_id = 2;
+        $nuevo->acto_id = 2;
+        $nuevo->jurado_acto_id = 2;
+        $nuevo->save();
     }
 }

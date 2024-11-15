@@ -27,5 +27,7 @@ class JuradoSeeder extends Seeder
         $nuevo->docente_id = 3;
         $nuevo->sinodal = 'suplente';
         $nuevo->save();
+
+        
     }
 }
