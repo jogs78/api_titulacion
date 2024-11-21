@@ -14,20 +14,40 @@ class JuradoSeeder extends Seeder
     public function run(): void
     {
         $nuevo = new Jurado();
+        $nuevo->acto_id = 1;
         $nuevo->docente_id = 1;
         $nuevo->sinodal = 'presidente';
         $nuevo->save();
 
         $nuevo = new Jurado();
+        $nuevo->acto_id = 1;
         $nuevo->docente_id = 2;
         $nuevo->sinodal = 'Secretario';
         $nuevo->save();
 
         $nuevo = new Jurado();
+        $nuevo->acto_id = 1;
         $nuevo->docente_id = 3;
         $nuevo->sinodal = 'suplente';
         $nuevo->save();
 
-        
+        $nuevo = new Jurado();
+        $nuevo->acto_id = 2;
+        $nuevo->docente_id = 1;
+        $nuevo->sinodal = 'presidente';
+        $nuevo->save();
+
+        $nuevo = new Jurado();
+        $nuevo->acto_id = 2;
+        $nuevo->docente_id = 2;
+        $nuevo->sinodal = 'Secretario';
+        $nuevo->save();
+
+        $nuevo = new Jurado();
+        $nuevo->acto_id = 2;
+        $nuevo->docente_id = 3;
+        $nuevo->sinodal = 'suplente';
+        $nuevo->save();
+
     }
 }

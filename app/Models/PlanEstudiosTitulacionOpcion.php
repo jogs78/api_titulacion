@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlanEstudiosTitulacionOpcion extends Model
 {
-    use HasFactory;
     protected $table = 'plan_estudios_titulacion_opciones';
+    protected $fillable = ['plan_estudios_id', 'titulacion_opcion_id'];
+    use HasFactory;
+
+    public function planEstudios(){
+        return $this->belongsTo(PlanEstudio::class);
+    }
+    public function titulacionOpcion(){
+        return $this->belongsTo(TitulacionOpcion::class);
+    }
+
 }

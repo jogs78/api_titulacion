@@ -21,10 +21,9 @@ class DatabaseSeeder extends Seeder
         $this->call(EgresadoSeeder::class);
         $this->call(UsuarioSeeder::class);
         $this->call(PlanEstudiosTitulacionOpcionSeeder::class);
-        $this->call(JuradoSeeder::class);
         $this->call(ActoSeeder::class);
+        $this->call(JuradoSeeder::class);
         $this->call(ComiteSeeder::class);
-        $this->call(JuradoActoSeeder::class);
         $this->call(TramiteSeeder::class);
 
 

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jurado_actos', function (Blueprint $table) {
+        Schema::create('jurados', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('jurado_id')->constrained('jurados');
             $table->foreignId('acto_id')->constrained('actos');
+            $table->foreignId('docente_id')->constrained('docentes');
+            $table->enum('sinodal',['presidente','secretario','Suplente']);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jurado_actos');
+        Schema::dropIfExists('jurados');
     }
 };

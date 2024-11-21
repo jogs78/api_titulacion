@@ -14,7 +14,6 @@ class ActoSeeder extends Seeder
     public function run(): void
     {
         $nuevo = new Acto();
-        #$nuevo->jurado_id = 1;
         $nuevo->modalidad = 'Presencial';
         $nuevo->fecha = '2025-01-05';
         $nuevo->hora = '10:00:00';
@@ -22,7 +21,6 @@ class ActoSeeder extends Seeder
         $nuevo->save();
 
         $nuevo = new Acto();
-        #$nuevo->jurado_id = 1;
         $nuevo->modalidad = 'Presencial';
         $nuevo->fecha = '2025-01-05';
         $nuevo->hora = '12:00:00';

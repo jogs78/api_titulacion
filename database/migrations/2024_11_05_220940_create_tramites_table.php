@@ -23,7 +23,7 @@ return new class extends Migration
             $table->enum('pago',['aceptado','pendiente']);
             $table->foreignId('comite_id')->constrained('comites');
             $table->foreignId('acto_id')->constrained('actos');
-            $table->foreignId('jurado_acto_id')->constrained('jurado_actos');
+            #$table->foreignId('jurado_id')->constrained('jurados');
 
 
             $table->timestamps();

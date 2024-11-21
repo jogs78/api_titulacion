@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class TitulacionOpcion extends Model
 {
-    use HasFactory;
     protected $table = 'titulacion_opciones';
+    protected $fillable = ['nombre', 'descripcion', 'tiempo_maximo'];
+    use HasFactory;
+
+    public function planEstudiosTitulacionOpcion()
+    {
+        return $this->hasMany(PlanEstudiosTitulacionOpcion::class, 'plan_estudios_id');
+    }
+
 }
