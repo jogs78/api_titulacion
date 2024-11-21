@@ -44,6 +44,22 @@ return [
             'throw' => false,
         ],
 
+        'publicas'=>[
+            'driver' => 'local',
+            'root' => public_path('publicas'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'privadas'=>[
+            'driver' => 'local',
+            'root' => storage_path('app/privadas'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'private',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

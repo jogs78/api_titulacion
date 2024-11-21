@@ -13,7 +13,7 @@ class ComiteSeeder extends Seeder
      */
     public function run(): void
     {
-        $nuevo = new Comite();
+        $nuevo = new Comite(); #1
         $nuevo->docente_id = 1;
         $nuevo->plan_estudios_id = 5;
         $nuevo->cargo = 'asesor';

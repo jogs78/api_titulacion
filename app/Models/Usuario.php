@@ -13,5 +13,7 @@ class Usuario extends Authenticatable
     public function actual(){
         return $this->morphTo();
     }
+
     
+
 }

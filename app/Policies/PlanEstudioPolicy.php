@@ -13,7 +13,7 @@ class PlanEstudioPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        //
+
     }
 
     /**
@@ -41,6 +41,8 @@ class PlanEstudioPolicy
      */
     public function update(Usuario $usuario, PlanEstudio $planEstudio): bool
     {
+        if($usuario->actual_type=="App\Models\Administrativo") return true;
+        else return false;
         //checar que sea administrativos
         //checar que este activo
         //checar que tenga los permisos
@@ -52,6 +54,8 @@ class PlanEstudioPolicy
     public function delete(Usuario $usuario, PlanEstudio $planEstudio): bool
     {
         //
+        if($usuario->actual_type=="App\Models\Administrativo") return true;
+        else return false;
     }
 
     /**
