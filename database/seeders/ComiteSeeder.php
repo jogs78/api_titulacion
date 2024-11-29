@@ -13,22 +13,29 @@ class ComiteSeeder extends Seeder
      */
     public function run(): void
     {
-        $nuevo = new Comite(); #1
-        $nuevo->docente_id = 1;
-        $nuevo->plan_estudios_id = 5;
-        $nuevo->cargo = 'asesor';
+        $nuevo = new Comite();
+        $nuevo->plan_estudios_id = 1;
+        $nuevo->especificacion = 'Ninguna';
         $nuevo->save();
 
         $nuevo = new Comite();
-        $nuevo->docente_id = 2;
-        $nuevo->plan_estudios_id = 5;
-        $nuevo->cargo = 'revisor';
+        $nuevo->plan_estudios_id = 2;
+        $nuevo->especificacion = 'Ninguna';
         $nuevo->save();
 
         $nuevo = new Comite();
-        $nuevo->docente_id = 3;
+        $nuevo->plan_estudios_id = 3;
+        $nuevo->especificacion = 'Ninguna';
+        $nuevo->save();
+
+        $nuevo = new Comite();
+        $nuevo->plan_estudios_id = 4;
+        $nuevo->especificacion = 'Ninguna';
+        $nuevo->save();
+
+        $nuevo = new Comite();
         $nuevo->plan_estudios_id = 5;
-        $nuevo->cargo = 'revisor';
+        $nuevo->especificacion = 'Ninguna';
         $nuevo->save();
     }
 }

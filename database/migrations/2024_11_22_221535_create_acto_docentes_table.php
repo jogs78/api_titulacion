@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('acto_docentes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('acto_id')->constrained('actos');
+            $table->foreignId('docente_id')->constrained('docentes');
+            $table->enum('sinodal',['presidente','secretario','Suplente']);
             $table->timestamps();
         });
     }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jurado;
-use App\Http\Requests\StoreJuradoRequest;
-use App\Http\Requests\UpdateJuradoRequest;
+use App\Models\ComiteDocente;
+use App\Http\Requests\StoreComiteDocenteRequest;
+use App\Http\Requests\UpdateComiteDocenteRequest;
 
-class JuradoController extends Controller
+class ComiteDocenteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class JuradoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreJuradoRequest $request)
+    public function store(StoreComiteDocenteRequest $request)
     {
         //
     }
@@ -27,7 +27,7 @@ class JuradoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Jurado $jurado)
+    public function show(ComiteDocente $comiteDocente)
     {
         //
     }
@@ -35,7 +35,7 @@ class JuradoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateJuradoRequest $request, Jurado $jurado)
+    public function update(UpdateComiteDocenteRequest $request, ComiteDocente $comiteDocente)
     {
         //
     }
@@ -43,7 +43,7 @@ class JuradoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jurado $jurado)
+    public function destroy(ComiteDocente $comiteDocente)
     {
         //
     }

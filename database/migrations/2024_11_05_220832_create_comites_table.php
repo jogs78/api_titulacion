@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('comites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('docente_id')->constrained('docentes');
             $table->foreignId('plan_estudios_id')->constrained('plan_estudios');
-            $table->enum('cargo', ['asesor', 'revisor']);
+            $table->string('especificacion');
             $table->timestamps();
         });
     }
