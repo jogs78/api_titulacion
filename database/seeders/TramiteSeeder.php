@@ -38,7 +38,7 @@ class TramiteSeeder extends Seeder
         $nuevo->pago = 'pendiente';
         $nuevo->comite_id = 2;
         $nuevo->acto_id = 2;
-        #$nuevo->jurado_acto_id = 2;
         $nuevo->save();
+
     }
 }

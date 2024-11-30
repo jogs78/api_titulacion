@@ -26,11 +26,10 @@ class PuertaController extends Controller
             $usuario_encontrado->save();
 
             $usuario_actual = $usuario_encontrado->actual;
-            $usuario_actual->calificacion = 100;
             $usuario_actual->token = $usuario_encontrado->token;
             return response()->json($usuario_encontrado->actual,200);
         }
         return response()->json(["Autenticar a $usuario"],200);
     }
-    
+
 }

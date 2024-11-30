@@ -13,7 +13,7 @@ class TramitePolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**
@@ -21,7 +21,7 @@ class TramitePolicy
      */
     public function view(Usuario $usuario, Tramite $tramite): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**
@@ -29,7 +29,8 @@ class TramitePolicy
      */
     public function create(Usuario $usuario): bool
     {
-        //
+        if($usuario->actual_type=="App\Models\Administrativo") return true;
+        else return false;
     }
 
     /**
@@ -37,7 +38,7 @@ class TramitePolicy
      */
     public function update(Usuario $usuario, Tramite $tramite): bool
     {
-        //
+         return $usuario->actual_type == "App\Models\Administrativo";
     }
 
     /**
@@ -45,7 +46,8 @@ class TramitePolicy
      */
     public function delete(Usuario $usuario, Tramite $tramite): bool
     {
-        //
+        if($usuario->actual_type=="App\Models\Administrativo") return true;
+        else return false;
     }
 
     /**
@@ -53,7 +55,7 @@ class TramitePolicy
      */
     public function restore(Usuario $usuario, Tramite $tramite): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +63,6 @@ class TramitePolicy
      */
     public function forceDelete(Usuario $usuario, Tramite $tramite): bool
     {
-        //
+        return false;
     }
 }

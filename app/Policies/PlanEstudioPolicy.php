@@ -13,7 +13,7 @@ class PlanEstudioPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-
+        return true;
     }
 
     /**
@@ -25,6 +25,7 @@ class PlanEstudioPolicy
         if($usuario->carrera == $planEstudio->carrera) return true;
         else return false;
 */
+        return true;
     }
 
     /**
@@ -63,7 +64,7 @@ class PlanEstudioPolicy
      */
     public function restore(Usuario $usuario, PlanEstudio $planEstudio): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -71,6 +72,6 @@ class PlanEstudioPolicy
      */
     public function forceDelete(Usuario $usuario, PlanEstudio $planEstudio): bool
     {
-        //
+        return false;
     }
 }

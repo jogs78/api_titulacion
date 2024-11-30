@@ -22,7 +22,16 @@ class UpdateTramiteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'egresado_id' => 'sometimes|exists:egresados,id',
+            'titulacion_opciones_id' => 'sometimes|exists:titulacion_opciones,id',
+            'nombre_proyecto' => 'sometimes|string|max:255',
+            'liberacion' => 'sometimes|in:aceptado,rechazado,pendiente',
+            'status' => 'sometimes|in:iniciado,rechazado,pendiente',
+            'paso' => 'sometimes|in:iniciado,rechazado,pendiente',
+            'observaciones' => 'nullable|string',
+            'pago' => 'sometimes|in:aceptado,pendiente',
+            'comite_id' => 'sometimes|exists:comites,id',
+            'acto_id' => 'sometimes|exists:actos,id',
         ];
     }
 }
