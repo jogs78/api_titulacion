@@ -14,8 +14,12 @@ class TramiteController extends Controller
      */
     public function index()
     {
-        $tramites = Tramite::all();
-        return response()->json($tramites);
+        if(Gate::allows('viewAny', Tramite::class)){
+            $tramites = Tramite::all();
+            return response()->json($tramites, 200);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -40,13 +44,14 @@ class TramiteController extends Controller
      */
     public function show(Tramite $tramite)
     {
+        if (Gate::allows('view', $tramite)) {
+            return response()->json($tramite);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
         $data = Tramite::find($tramite);
 
-    if ($data) {
-            return response()->json($data);
-        } else {
-            return response()->json(['error' => 'No encontrado'], 404);
-        }
+
     }
 
     /**

@@ -5,6 +5,8 @@ namespace App\Policies;
 use App\Models\Tramite;
 use App\Models\Usuario;
 use Illuminate\Auth\Access\Response;
+use Illuminate\support\Facades\Log;
+use PhpParser\Node\Stmt\Echo_;
 
 class TramitePolicy
 {
@@ -13,7 +15,17 @@ class TramitePolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
+
+        ob_start();
+        var_dump(in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']));
+        var_dump($usuario->nombre_usuario);
+        $result = ob_get_clean();
+
+        Log::channel('debug')->info('Usuario Autorizado '.$result);
+
         return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
+
+
     }
 
     /**
