@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('opcion_titulacion_id')->constrained('titulacion_opciones');
             $table->string('documento_requerido');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->enum('tipo', ['PDF', 'imagen', 'Fotografia']);
             $table->timestamps();
         });

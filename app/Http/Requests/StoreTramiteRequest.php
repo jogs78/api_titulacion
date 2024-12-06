@@ -25,13 +25,13 @@ class StoreTramiteRequest extends FormRequest
             'egresado_id' => 'required|exists:egresados,id',
             'titulacion_opciones_id' => 'required|exists:titulacion_opciones,id',
             'nombre_proyecto' => 'required|string|max:255',
-            'liberacion' => 'required|in:aceptado,rechazado,pendiente',
-            'status' => 'required|in:iniciado,rechazado,pendiente',
-            'paso' => 'required|in:iniciado,rechazado,pendiente',
-            'observaciones' => 'nullable|string',
-            'pago' => 'required|in:aceptado,pendiente',
-            'comite_id' => 'required|exists:comites,id',
-            'acto_id' => 'required|exists:actos,id',
+            #'liberacion' => 'required|in:aceptado,rechazado,pendiente',
+            #'status' => 'required|in:iniciado,rechazado,pendiente',
+            #'paso' => 'required|in:iniciado,rechazado,pendiente',
+            #'observaciones' => 'nullable|string',
+            #'pago' => 'required|in:aceptado,pendiente',
+            #'comite_id' => 'required|exists:comites,id',
+            #'acto_id' => 'required|exists:actos,id',
         ];
     }
 }

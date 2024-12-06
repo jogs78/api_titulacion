@@ -13,7 +13,8 @@ class PlanRequisitoController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = PlanRequisito::all();
+            return response()->json($tramites, 200);
     }
 
     /**

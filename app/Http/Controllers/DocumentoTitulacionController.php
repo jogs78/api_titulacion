@@ -21,7 +21,11 @@ class DocumentoTitulacionController extends Controller
      */
     public function store(StoreDocumentoTitulacionRequest $request)
     {
-        //
+        if ($request->hasFile('documento')) {
+            $file = $request->file('documento');
+            $nombre = $file->getClientOriginalName();
+            $file->move(public_path('documentos'), $nombre);
+        }
     }
 
     /**

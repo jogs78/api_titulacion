@@ -25,7 +25,7 @@ class PlanEstudioPolicy
         if($usuario->carrera == $planEstudio->carrera) return true;
         else return false;
 */
-        return true;
+    return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**

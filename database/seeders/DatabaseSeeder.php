@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ComiteSeeder::class);
         $this->call(ComiteDocenteSeeder::class);
         $this->call(TramiteSeeder::class);
+        $this->call(PlanRequisitoSeeder::class);
+        $this->call(OpcionRequisitoSeeder::class);
 
 
     }

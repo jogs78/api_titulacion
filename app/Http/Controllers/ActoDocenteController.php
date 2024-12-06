@@ -13,7 +13,8 @@ class ActoDocenteController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = ActoDocente::all();
+            return response()->json($tramites, 200);
     }
 
     /**

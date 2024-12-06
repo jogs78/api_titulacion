@@ -41,8 +41,7 @@ class TramitePolicy
      */
     public function create(Usuario $usuario): bool
     {
-        if($usuario->actual_type=="App\Models\Administrativo") return true;
-        else return false;
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**

@@ -13,7 +13,8 @@ class PlanEstudiosTitulacionOpcionController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = PlanEstudiosTitulacionOpcion::all();
+            return response()->json($tramites, 200);
     }
 
     /**

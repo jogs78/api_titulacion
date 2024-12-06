@@ -13,9 +13,9 @@ class Acto extends Model
     use HasFactory;
 
 
-    public function jurado()
+    public function actoDocente()
     {
-        return $this->hasMany(Jurado::class, 'acto_id');
+        return $this->hasMany(ActoDocente::class, 'acto_id');
     }
 
     public function tramite ()

@@ -13,8 +13,10 @@ class ComiteDocenteController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = ComiteDocente::all();
+        return response()->json($tramites, 200);
     }
+    
 
     /**
      * Store a newly created resource in storage.

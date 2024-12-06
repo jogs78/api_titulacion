@@ -16,13 +16,13 @@ return new class extends Migration
             $table->foreignID('egresado_id')->constrained('Egresados');
             $table->foreignId('titulacion_opciones_id')->constrained('titulacion_opciones');
             $table->string('nombre_proyecto');
-            $table->enum('liberacion',['aceptado','rechazado','pendiente']);
-            $table->enum('status',['iniciado','rechazado','pendiente']); #Si el tramite es aceptado o rechazado
-            $table->enum('paso',['iniciado','rechazado','pendiente']); #verificar que colocar (que puntos del tramite hay)
-            $table->string('observaciones');
-            $table->enum('pago',['aceptado','pendiente']);
-            $table->foreignId('comite_id')->constrained('comites');
-            $table->foreignId('acto_id')->constrained('actos');
+            $table->enum('liberacion',['aceptado','rechazado','pendiente'])->default('pendiente'); #Si el proyecto es aceptado o rechazado
+            $table->enum('status',['iniciado','rechazado','pendiente'])->default('iniciado'); #Si el tramite es aceptado o rechazado
+            $table->enum('paso',['iniciado','rechazado','pendiente'])->default('iniciado'); #verificar que colocar (que puntos del tramite hay)
+            $table->string('observaciones')->default('pendiente');
+            $table->enum('pago',['aceptado','pendiente'])->default('pendiente');
+            $table->foreignId('comite_id')->nullable()->constrained('comites')->default('null');
+            $table->foreignId('acto_id')->nullable()->constrained('actos')->default('null');
             #$table->foreignId('jurado_id')->constrained('jurados');
 
 

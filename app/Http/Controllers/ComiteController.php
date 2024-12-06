@@ -13,7 +13,8 @@ class ComiteController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = Comite::all();
+            return response()->json($tramites, 200);
     }
 
     /**

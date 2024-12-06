@@ -13,7 +13,8 @@ class OpcionRequisitoController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = OpcionRequisito::all();
+            return response()->json($tramites, 200);
     }
 
     /**

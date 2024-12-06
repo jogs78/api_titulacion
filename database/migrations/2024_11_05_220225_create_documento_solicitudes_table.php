@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('documento_solicitudes', function (Blueprint $table) {
             $table->id();
-            $table->string('cargo');
-            $table->foreignId('docente_id')->constrained('docentes');
-            $table->timestamps();
+            $table->string('ruta');
+            $table->enum('validacion', ['pendiente', 'aceptado', 'rechazado'])->default('pendiente'); // pendiente de revizar
+            $table->foreignId('plan_estudios-id')->constrained('plan_estudios');
+            $table->foreignId('egresado_id')->constrained('egresados');
         });
     }
 

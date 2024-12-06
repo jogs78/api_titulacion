@@ -21,4 +21,7 @@ class Egresado extends Model
     public function planEstudio(){
         return $this->belongsTo(PlanEstudio::class, 'plan_estudio_id');
     }
+    public function documentosSolicitud(){
+        return $this->hasMany(DocumentoSolicitud::class, 'egresado_id');
+    }
 }

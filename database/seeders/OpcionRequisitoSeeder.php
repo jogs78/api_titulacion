@@ -24,6 +24,31 @@ class OpcionRequisitoSeeder extends Seeder
         $nuevo->descripcion="Documento que contenga el objetivo, el indice y la bibliografia propuestos"; #por rectificar descripcion
         $nuevo->tipo="PDF";
         $nuevo ->save();
+        $nuevo = new OpcionRequisito();
+        $nuevo->opcion_titulacion_id=1;
+        $nuevo->documento_requerido="Certificado de estudios Profesionales";
+        $nuevo->descripcion="N/A"; #por rectificar descripcion
+        $nuevo->tipo="PDF";
+        $nuevo ->save();
+        $nuevo = new OpcionRequisito();
+        $nuevo->opcion_titulacion_id=1;
+        $nuevo->documento_requerido="Constancia de servicio social";
+        $nuevo->descripcion="N/A"; #por rectificar descripcion
+        $nuevo->tipo="PDF";
+        $nuevo ->save();
+        $nuevo = new OpcionRequisito();
+        $nuevo->opcion_titulacion_id=1;
+        $nuevo->documento_requerido="Constancia de Acreditacion de lengua Extranjera";
+        $nuevo->descripcion="Acreditacion del idioma Inglés y Acta de aprovacion del curso o examen"; #por rectificar descripcion
+        $nuevo->tipo="PDF";
+        $nuevo ->save();
+
+        $nuevo = new OpcionRequisito();
+        $nuevo->opcion_titulacion_id=1;
+        $nuevo->documento_requerido="Certificado de practicas profesionales";
+        $nuevo->descripcion="Solo en planes 73, 80,"; #por rectificar descripcion
+        $nuevo->tipo="PDF";
+        $nuevo ->save();
 
         $nuevo = new OpcionRequisito();
         $nuevo->opcion_titulacion_id=2;

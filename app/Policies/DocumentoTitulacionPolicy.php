@@ -13,7 +13,7 @@ class DocumentoTitulacionPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -21,7 +21,7 @@ class DocumentoTitulacionPolicy
      */
     public function view(Usuario $usuario, DocumentoTitulacion $documentoTitulacion): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Egresado']);
     }
 
     /**
@@ -29,7 +29,7 @@ class DocumentoTitulacionPolicy
      */
     public function create(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**
@@ -37,7 +37,7 @@ class DocumentoTitulacionPolicy
      */
     public function update(Usuario $usuario, DocumentoTitulacion $documentoTitulacion): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**
@@ -45,7 +45,7 @@ class DocumentoTitulacionPolicy
      */
     public function delete(Usuario $usuario, DocumentoTitulacion $documentoTitulacion): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -53,7 +53,7 @@ class DocumentoTitulacionPolicy
      */
     public function restore(Usuario $usuario, DocumentoTitulacion $documentoTitulacion): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class DocumentoTitulacionPolicy
      */
     public function forceDelete(Usuario $usuario, DocumentoTitulacion $documentoTitulacion): bool
     {
-        //
+        return false;
     }
 }

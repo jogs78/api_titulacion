@@ -13,7 +13,8 @@ class TitulacionOpcionController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = TitulacionOpcion::all();
+            return response()->json($tramites, 200);
     }
 
     /**
