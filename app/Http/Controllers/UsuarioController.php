@@ -13,7 +13,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = Usuario::all();
+            return response()->json($tramites, 200);
     }
     /**
      * Store a newly created resource in storage.

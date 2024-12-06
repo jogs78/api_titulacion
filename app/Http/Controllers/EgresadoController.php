@@ -13,7 +13,8 @@ class EgresadoController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = Egresado::all();
+        return response()->json($tramites, 200);
     }
 
     /**

@@ -13,7 +13,8 @@ class AdministrativoController extends Controller
      */
     public function index()
     {
-        //
+        $tramites = Administrativo::all();
+            return response()->json($tramites, 200);
     }
 
     /**
