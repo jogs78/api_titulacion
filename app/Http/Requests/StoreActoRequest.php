@@ -11,7 +11,7 @@ class StoreActoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreActoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'modalidad' => 'required|string|max:256',
+            'fecha' => 'required|date',
+            'hora' => 'required|date_format:H:i',
+            'lugar' => 'required|string|max:256',
         ];
     }
 }

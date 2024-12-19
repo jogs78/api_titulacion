@@ -11,7 +11,7 @@ class UpdateActoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateActoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'modalidad' => 'sometimes|string|max:256',
+            'fecha' => 'sometimes|date',
+            'hora' => 'sometimes|date_format:H:i',
+            'lugar' => 'sometimes|string|max:256',
         ];
     }
 }

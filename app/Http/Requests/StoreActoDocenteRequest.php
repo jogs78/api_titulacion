@@ -11,7 +11,7 @@ class StoreActoDocenteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreActoDocenteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'acto_id' => ['required', 'exists:actos,id'],
+            'docente_id' => ['required', 'exists:docentes,id'],
+            'sinodal' => ['required', 'in:presidente,secretario,suplente'],
         ];
     }
 }

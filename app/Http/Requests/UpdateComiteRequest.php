@@ -11,7 +11,7 @@ class UpdateComiteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateComiteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'plan_estudio_id' => ['sometimes', 'exists:plan_estudios,id'],
+            'especificacion' => ['sometimes', 'string', 'max:255'],
         ];
     }
 }

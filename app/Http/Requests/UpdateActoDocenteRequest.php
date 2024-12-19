@@ -11,7 +11,7 @@ class UpdateActoDocenteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateActoDocenteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'acto_id' => ['sometimes', 'exists:actos,id'],
+            'docente_id' => ['sometimes', 'exists:docentes,id'],
+            'sinodal' => ['sometimes', 'in:presidente,secretario,suplente'],
         ];
     }
 }

@@ -11,7 +11,7 @@ class StoreComiteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreComiteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'plan_estudio_id' => ['required', 'exists:plan_estudios,id'],
+            'especificacion' => ['required', 'string', 'max:255'],
         ];
     }
 }

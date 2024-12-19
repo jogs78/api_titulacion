@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Acto;
 use App\Http\Requests\StoreActoRequest;
 use App\Http\Requests\UpdateActoRequest;
+use Illuminate\Support\Facades\Gate;
 
 class ActoController extends Controller
 {
@@ -13,8 +14,12 @@ class ActoController extends Controller
      */
     public function index()
     {
-        $tramites = Acto::all();
-            return response()->json($tramites, 200);
+        if(Gate::allows('viewAny', Acto::class)){
+            $actos = Acto::all();
+            return response()->json($actos, 200);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -22,7 +27,16 @@ class ActoController extends Controller
      */
     public function store(StoreActoRequest $request)
     {
-        //
+        if (Gate::allows('create', Acto::class)) {
+            // Crear tramite
+            $acto = new Acto();
+            $datos = $request->all();
+            $acto->fill($datos);
+            $acto->save();
+            return response()->json($acto, 201);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -30,7 +44,12 @@ class ActoController extends Controller
      */
     public function show(Acto $acto)
     {
-        //
+        if (Gate::allows('view', $acto)) {
+            return response()->json($acto);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
+        $data = Acto::find($acto);
     }
 
     /**
@@ -38,7 +57,17 @@ class ActoController extends Controller
      */
     public function update(UpdateActoRequest $request, Acto $acto)
     {
-        //
+        if (Gate::allows('update', $acto)) {
+            $datos = $request->all();
+
+            // Actualizar relaciones si es necesario
+            $acto->fill($datos);
+            $acto->save();
+
+            return response()->json($acto);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para actualizar este trámite'], 403);
+        }
     }
 
     /**
@@ -46,6 +75,12 @@ class ActoController extends Controller
      */
     public function destroy(Acto $acto)
     {
-        //
+        if (Gate::allows('delete', $acto)) {
+            $acto->delete();
+
+            return response()->json(['message' => 'Trámite eliminado correctamente']);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para eliminar este trámite'], 403);
+        }
     }
 }

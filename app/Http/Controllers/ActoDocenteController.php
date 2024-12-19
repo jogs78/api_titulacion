@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ActoDocente;
 use App\Http\Requests\StoreActoDocenteRequest;
 use App\Http\Requests\UpdateActoDocenteRequest;
+use App\Models\Acto;
+use Illuminate\Support\Facades\Gate;
 
 class ActoDocenteController extends Controller
 {
@@ -13,8 +15,8 @@ class ActoDocenteController extends Controller
      */
     public function index()
     {
-        $tramites = ActoDocente::all();
-            return response()->json($tramites, 200);
+        $actodocentes = ActoDocente::all();
+            return response()->json($actodocentes, 200);
     }
 
     /**
@@ -22,7 +24,16 @@ class ActoDocenteController extends Controller
      */
     public function store(StoreActoDocenteRequest $request)
     {
-        //
+        if (Gate::allows('create', ActoDocente::class)) {
+            // Crear tramite
+            $actodocente = new ActoDocente();
+            $datos = $request->all();
+            $actodocente->fill($datos);
+            $actodocente->save();
+            return response()->json($actodocente, 201);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -30,7 +41,12 @@ class ActoDocenteController extends Controller
      */
     public function show(ActoDocente $actoDocente)
     {
-        //
+        if (Gate::allows('view', $actoDocente)) {
+            return response()->json($actoDocente);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
+        $data = ActoDocente::find($actoDocente);
     }
 
     /**
@@ -38,7 +54,19 @@ class ActoDocenteController extends Controller
      */
     public function update(UpdateActoDocenteRequest $request, ActoDocente $actoDocente)
     {
-        //
+        if (Gate::allows('update', $actoDocente)) {
+            $datos = $request->all();
+
+            // Actualizar relaciones si es necesario
+            $actoDocente->fill($datos);
+            $actoDocente->load('acto', 'docente'); // Cargar relaciones necesarias
+
+            $actoDocente->save();
+
+            return response()->json($actoDocente);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para actualizar este trámite'], 403);
+        }
     }
 
     /**
@@ -46,6 +74,12 @@ class ActoDocenteController extends Controller
      */
     public function destroy(ActoDocente $actoDocente)
     {
-        //
+        if (Gate::allows('delete', $actoDocente)) {
+            $actoDocente->delete();
+
+            return response()->json(['message' => 'Trámite eliminado correctamente']);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para eliminar este trámite'], 403);
+        }
     }
 }

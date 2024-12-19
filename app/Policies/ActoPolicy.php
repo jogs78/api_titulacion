@@ -13,7 +13,7 @@ class ActoPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
     }
 
     /**
@@ -21,7 +21,7 @@ class ActoPolicy
      */
     public function view(Usuario $usuario, Acto $acto): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
     }
 
     /**
@@ -29,7 +29,7 @@ class ActoPolicy
      */
     public function create(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
     }
 
     /**
@@ -37,7 +37,7 @@ class ActoPolicy
      */
     public function update(Usuario $usuario, Acto $acto): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
     }
 
     /**
@@ -45,7 +45,7 @@ class ActoPolicy
      */
     public function delete(Usuario $usuario, Acto $acto): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
     }
 
     /**
@@ -53,7 +53,7 @@ class ActoPolicy
      */
     public function restore(Usuario $usuario, Acto $acto): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
     }
 
     /**
@@ -61,6 +61,6 @@ class ActoPolicy
      */
     public function forceDelete(Usuario $usuario, Acto $acto): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
     }
 }

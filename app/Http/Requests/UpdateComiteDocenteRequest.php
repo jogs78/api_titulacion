@@ -11,7 +11,7 @@ class UpdateComiteDocenteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateComiteDocenteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+           'comite_id' => ['required', 'exists:comites,id'],
+            'docente_id' => ['required', 'exists:docentes,id'],
+            'cargo' => ['required', 'string', 'max:255'],
         ];
     }
 }

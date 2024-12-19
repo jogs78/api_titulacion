@@ -34,6 +34,8 @@ class TramitePolicy
     public function view(Usuario $usuario, Tramite $tramite): bool
     {
         return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
+        
+
     }
 
     /**
