@@ -11,7 +11,7 @@ class UpdatePlanEstudiosTitulacionOpcionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdatePlanEstudiosTitulacionOpcionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'plan_estudios_id' => 'sometimes|integer|exists:plan_estudios,id',
+            'titulacion_opcion_id' => 'sometimes|integer|exists:titulacion_opciones,id',
         ];
     }
 }

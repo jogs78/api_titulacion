@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PlanRequisito;
 use App\Http\Requests\StorePlanRequisitoRequest;
 use App\Http\Requests\UpdatePlanRequisitoRequest;
+use Illuminate\Support\Facades\Gate;
 
 class PlanRequisitoController extends Controller
 {
@@ -13,8 +14,12 @@ class PlanRequisitoController extends Controller
      */
     public function index()
     {
-        $tramites = PlanRequisito::all();
-            return response()->json($tramites, 200);
+        if(Gate::allows('viewAny', PlanRequisito::class)){
+            $planRequisito = PlanRequisito::all();
+            return response()->json($planRequisito, 200);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -22,7 +27,16 @@ class PlanRequisitoController extends Controller
      */
     public function store(StorePlanRequisitoRequest $request)
     {
-        //
+        if (Gate::allows('create', PlanRequisito::class)) {
+            // Crear tramite
+            $planRequisito = new PlanRequisito();
+            $datos = $request->all();
+            $planRequisito->fill($datos);
+            $planRequisito->save();
+            return response()->json($planRequisito, 201);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -30,7 +44,12 @@ class PlanRequisitoController extends Controller
      */
     public function show(PlanRequisito $planRequisito)
     {
-        //
+        if (Gate::allows('view', $planRequisito)) {
+            return response()->json($planRequisito);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
+        $data = PlanRequisito::find($planRequisito);
     }
 
     /**
@@ -38,7 +57,18 @@ class PlanRequisitoController extends Controller
      */
     public function update(UpdatePlanRequisitoRequest $request, PlanRequisito $planRequisito)
     {
-        //
+        if (Gate::allows('update', $planRequisito)) {
+            $datos = $request->all();
+
+            // Actualizar relaciones si es necesario
+            $planRequisito->fill($datos);
+            $planRequisito->load('plan_estudio_id'); // Cargar relaciones necesarias
+            $planRequisito->save();
+
+            return response()->json($planRequisito);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para actualizar este trámite'], 403);
+        }
     }
 
     /**
@@ -46,6 +76,13 @@ class PlanRequisitoController extends Controller
      */
     public function destroy(PlanRequisito $planRequisito)
     {
-        //
+        if (Gate::allows('delete', $planRequisito)) {
+            $planRequisito->delete();
+
+            return response()->json(['message' => 'Trámite eliminado correctamente']);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para eliminar este trámite'], 403);
+        }
+
     }
 }

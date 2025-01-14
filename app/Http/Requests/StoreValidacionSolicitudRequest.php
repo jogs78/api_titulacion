@@ -11,7 +11,7 @@ class StoreValidacionSolicitudRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreValidacionSolicitudRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'ruta' => 'required|string|max:255',
+            'validacion' => 'required|string|in:pendiente,aceptado,rechazado',
+            'documento_solicitud_id' => 'required|integer|exists:documento_solicitudes,id',
+            'egresado_id' => 'required|integer|exists:egresados,id',
         ];
     }
 }

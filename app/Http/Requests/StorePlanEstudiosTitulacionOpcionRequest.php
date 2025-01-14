@@ -11,7 +11,7 @@ class StorePlanEstudiosTitulacionOpcionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StorePlanEstudiosTitulacionOpcionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'plan_estudios_id' => 'required|integer|exists:plan_estudios,id',
+            'titulacion_opcion_id' => 'required|integer|exists:titulacion_opciones,id',
         ];
     }
 }

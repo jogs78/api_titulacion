@@ -13,30 +13,30 @@ class PlanEstudioSeeder extends Seeder
      */
     public function run(): void
     {
-    
+
         $nuevo = new planEstudio();
-        $nuevo->fecha_inicio = date("1973-1-1");
+        $nuevo->fecha_inicio = date("1973-01-01");
         $nuevo->numero_creditos=260;
         $nuevo->save();
 
         $nuevo = new planEstudio();
-        $nuevo->fecha_inicio = date("1980-1-1");
+        $nuevo->fecha_inicio = date("1980-01-01");
         $nuevo->numero_creditos=260;
         $nuevo->save();
 
         $nuevo = new planEstudio();
-        $nuevo->fecha_inicio = date("1990-1-1");
+        $nuevo->fecha_inicio = date("1990-01-01");
         $nuevo->numero_creditos=260;
         $nuevo->save();
-        
+
         $nuevo = new planEstudio();
-        $nuevo->fecha_inicio = date("2004-1-1");
+        $nuevo->fecha_inicio = date("2004-01-01");
         $nuevo->numero_creditos=260;
         $nuevo->especialidad_id = 2;
         $nuevo->save();
 
         $nuevo = new planEstudio();
-        $nuevo->fecha_inicio = date("2010-1-1");
+        $nuevo->fecha_inicio = date("2010-01-01");
         $nuevo->numero_creditos=260;
         $nuevo->especialidad_id = 1;
         $nuevo->save();

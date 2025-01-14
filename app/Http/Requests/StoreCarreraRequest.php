@@ -11,7 +11,7 @@ class StoreCarreraRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreCarreraRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+           'nombre' => 'required|string|max:255|unique:carreras,nombre',
+           'clave' => 'required|string|max:20|unique:carreras,clave',
         ];
     }
 }

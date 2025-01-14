@@ -14,8 +14,12 @@ class DocumentoSolicitudController extends Controller
      */
     public function index()
     {
-        $documento_solicitud = DocumentoSolicitud::all();
-            return response()->json($documento_solicitud, 200);
+        if(Gate::allows('viewAny', DocumentoSolicitud::class)){
+            $documentoSolicitud = DocumentoSolicitud::all();
+            return response()->json($documentoSolicitud, 200);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -33,8 +37,8 @@ class DocumentoSolicitudController extends Controller
                 $documento = new DocumentoSolicitud();
                 $documento->nombre = $request->file('archivo')->getClientOriginalName();
                 $documento->ruta = $nombre_guardar;
-                $egresado = auth()->user(); // Assuming the authenticated user is the egresado
-                $documento->egresado_id = $egresado->id; // ID del egresado
+                $egresado = auth()->user();
+                $documento->egresado_id = $egresado->id;
                 $documento->plan_estudio_id = $egresado->planEstudio->id;
                 $documento->save();
             }
@@ -48,7 +52,12 @@ class DocumentoSolicitudController extends Controller
      */
     public function show(DocumentoSolicitud $documentoSolicitud)
     {
-        //
+        if (Gate::allows('view', $documentoSolicitud)) {
+            return response()->json($documentoSolicitud);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
+        $data = DocumentoSolicitud::find($documentoSolicitud);
     }
 
     /**
@@ -64,6 +73,12 @@ class DocumentoSolicitudController extends Controller
      */
     public function destroy(DocumentoSolicitud $documentoSolicitud)
     {
-        //
+        if (Gate::allows('delete', $documentoSolicitud)) {
+            $documentoSolicitud->delete();
+
+            return response()->json(['message' => 'Trámite eliminado correctamente']);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para eliminar este trámite'], 403);
+        }
     }
 }

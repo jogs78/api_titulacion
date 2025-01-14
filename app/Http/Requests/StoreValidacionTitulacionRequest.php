@@ -11,7 +11,7 @@ class StoreValidacionTitulacionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreValidacionTitulacionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'documento_titulacion_id' => 'required|integer|exists:documento_titulaciones,id',
+            'motivo' => 'required|string|max:255',
         ];
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Carrera;
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Auth\Access\Response;
 
 class CarreraPolicy
@@ -11,56 +11,56 @@ class CarreraPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, [ 'App\Models\Administrativo', 'App\Models\Egresado', 'App\Models\Docente' ]);
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Carrera $carrera): bool
+    public function view(Usuario $usuario, Carrera $carrera): bool
     {
-        //
+        return in_array($usuario->actual_type, [ 'App\Models\Administrativo', 'App\Models\Egresado', 'App\Models\Docente' ]);
     }
 
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, [ 'App\Models\Administrativo']);
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Carrera $carrera): bool
+    public function update(Usuario $usuario, Carrera $carrera): bool
     {
-        //
+        return in_array($usuario->actual_type, [ 'App\Models\Administrativo']);
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Carrera $carrera): bool
+    public function delete(Usuario $usuario, Carrera $carrera): bool
     {
-        //
+        return in_array($usuario->actual_type, [ 'App\Models\Administrativo']);
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Carrera $carrera): bool
+    public function restore(Usuario $usuario, Carrera $carrera): bool
     {
-        //
+        return false;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Carrera $carrera): bool
+    public function forceDelete(Usuario $usuario, Carrera $carrera): bool
     {
-        //
+        return false;
     }
 }

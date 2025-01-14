@@ -11,7 +11,7 @@ class UpdateTitulacionOpcionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateTitulacionOpcionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nombre' => 'sometimes|string|max:255',
+            'descripcion' => 'sometimes|string',
+            'tiempo_maximo' => 'sometimes|integer|min:1',
         ];
     }
 }

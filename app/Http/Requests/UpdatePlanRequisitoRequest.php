@@ -11,7 +11,7 @@ class UpdatePlanRequisitoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdatePlanRequisitoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'plan_estudio_id' => 'sometimes|integer|exists:plan_estudios,id',
+            'documento_requerido' => 'sometimes|string|max:255',
+            'descripcion' => 'sometimes|nullable|string|max:500',
+            'tipo' => 'sometimes|string|in:PDF,Imagen,Fotografia',
         ];
     }
 }

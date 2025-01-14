@@ -11,7 +11,7 @@ class StoreDocenteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class StoreDocenteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+                'nombre' => 'required|string|max:255',
+                'apellido_paterno' => 'required|string|max:255',
+                'apellido_materno' => 'required|string|max:255',
+                'cedula_profesional' => 'required|string|max:20|unique:docentes,cedula_profesional',
+                'correo' => 'required|string|email|max:255|unique:docentes,correo',
+                'profesion' => 'nullable|string|max:255',
+
         ];
     }
 }

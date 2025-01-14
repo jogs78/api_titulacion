@@ -15,8 +15,8 @@ class TramiteController extends Controller
     public function index()
     {
         if(Gate::allows('viewAny', Tramite::class)){
-            $tramites = Tramite::all();
-            return response()->json($tramites, 200);
+            $tramite = Tramite::all();
+            return response()->json($tramite, 200);
         } else {
             return response()->json(['error' => 'No autorizado'], 403);
         }

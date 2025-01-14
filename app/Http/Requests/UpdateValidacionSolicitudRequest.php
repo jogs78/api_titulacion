@@ -11,7 +11,7 @@ class UpdateValidacionSolicitudRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateValidacionSolicitudRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'ruta' => 'sometimes|string|max:255',
+            'validacion' => 'sometimes|string|in:pendiente,aceptado,rechazado',
+            'documento_solicitud_id' => 'sometimes|integer|exists:documento_solicitudes,id',
+            'egresado_id' => 'sometimes|integer|exists:egresados,id',
         ];
     }
 }

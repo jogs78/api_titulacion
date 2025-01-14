@@ -11,7 +11,7 @@ class UpdateValidacionTitulacionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateValidacionTitulacionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'documento_titulacion_id' => 'sometimes|integer|exists:documento_titulaciones,id',
+            'motivo' => 'sometimes|string|max:255',
         ];
     }
 }

@@ -14,8 +14,12 @@ class PlanEstudioController extends Controller
      */
     public function index()
     {
-        $todos = PlanEstudio::all();
-        return response()->json($todos);
+        if(Gate::allows('viewAny', PlanEstudio::class)){
+            $planEstudio = PlanEstudio::all();
+            return response()->json($planEstudio, 200);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -23,12 +27,16 @@ class PlanEstudioController extends Controller
      */
     public function store(StorePlanEstudioRequest $request)
     {
-        if(Gate::allows('create', PlanEstudio::class) ){
-            return response()->json(["Dando de alta",200]);
-        }else{
-            return response()->json(["No puede",403]);
+        if (Gate::allows('create', PlanEstudio::class)) {
+            // Crear tramite
+            $planEstudio = new PlanEstudio();
+            $datos = $request->all();
+            $planEstudio->fill($datos);
+            $planEstudio->save();
+            return response()->json($planEstudio, 201);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
         }
-//        $this->authorize('create', PlanEstudio::class);
     }
 
     /**
@@ -36,19 +44,12 @@ class PlanEstudioController extends Controller
      */
     public function show(PlanEstudio $planEstudio)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(PlanEstudio $planEstudio)
-    {
-        if(Gate::allows('update', $planEstudio) ){
-            return response()->json(["editando",200]);
-        }else{
-            return response()->json(["No puede",403]);
+        if (Gate::allows('view', $planEstudio)) {
+            return response()->json($planEstudio);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
         }
+        $data = PlanEstudio::find($planEstudio);
     }
 
     /**
@@ -56,7 +57,18 @@ class PlanEstudioController extends Controller
      */
     public function update(UpdatePlanEstudioRequest $request, PlanEstudio $planEstudio)
     {
-        //
+        if (Gate::allows('update', $planEstudio)) {
+            $datos = $request->all();
+
+            // Actualizar relaciones si es necesario
+            $planEstudio->fill($datos);
+            $planEstudio->load('especialidad_id'); // Cargar relaciones necesarias
+            $planEstudio->save();
+
+            return response()->json($planEstudio);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para actualizar este trámite'], 403);
+        }
     }
 
     /**
@@ -64,6 +76,12 @@ class PlanEstudioController extends Controller
      */
     public function destroy(PlanEstudio $planEstudio)
     {
-        //
+        if (Gate::allows('delete', $planEstudio)) {
+            $planEstudio->delete();
+
+            return response()->json(['message' => 'Trámite eliminado correctamente']);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para eliminar este trámite'], 403);
+        }
     }
 }

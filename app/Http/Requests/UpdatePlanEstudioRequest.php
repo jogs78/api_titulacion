@@ -22,7 +22,9 @@ class UpdatePlanEstudioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'fecha_inicio' => 'required|date',
+            'numero_creditos' => 'required|integer|min:1',
+            'especialidad_id' => ['required', 'integer', 'exists:especialidades,id'],
         ];
     }
 }

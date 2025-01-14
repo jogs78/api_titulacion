@@ -44,9 +44,7 @@ class PlanEstudioPolicy
     {
         if($usuario->actual_type=="App\Models\Administrativo") return true;
         else return false;
-        //checar que sea administrativos
-        //checar que este activo
-        //checar que tenga los permisos
+
     }
 
     /**

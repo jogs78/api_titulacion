@@ -13,7 +13,7 @@ class ValidacionTitulacionPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -21,7 +21,7 @@ class ValidacionTitulacionPolicy
      */
     public function view(Usuario $usuario, ValidacionTitulacion $validacionTitulacion): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**
@@ -29,7 +29,7 @@ class ValidacionTitulacionPolicy
      */
     public function create(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -37,7 +37,7 @@ class ValidacionTitulacionPolicy
      */
     public function update(Usuario $usuario, ValidacionTitulacion $validacionTitulacion): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -45,7 +45,7 @@ class ValidacionTitulacionPolicy
      */
     public function delete(Usuario $usuario, ValidacionTitulacion $validacionTitulacion): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -53,7 +53,7 @@ class ValidacionTitulacionPolicy
      */
     public function restore(Usuario $usuario, ValidacionTitulacion $validacionTitulacion): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class ValidacionTitulacionPolicy
      */
     public function forceDelete(Usuario $usuario, ValidacionTitulacion $validacionTitulacion): bool
     {
-        //
+        return false;
     }
 }

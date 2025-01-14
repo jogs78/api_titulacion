@@ -13,7 +13,7 @@ class OpcionRequisitoPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
     }
 
     /**
@@ -21,7 +21,7 @@ class OpcionRequisitoPolicy
      */
     public function view(Usuario $usuario, OpcionRequisito $opcionRequisito): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
     }
 
     /**
@@ -29,7 +29,7 @@ class OpcionRequisitoPolicy
      */
     public function create(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -37,7 +37,7 @@ class OpcionRequisitoPolicy
      */
     public function update(Usuario $usuario, OpcionRequisito $opcionRequisito): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -45,7 +45,7 @@ class OpcionRequisitoPolicy
      */
     public function delete(Usuario $usuario, OpcionRequisito $opcionRequisito): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -53,7 +53,7 @@ class OpcionRequisitoPolicy
      */
     public function restore(Usuario $usuario, OpcionRequisito $opcionRequisito): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class OpcionRequisitoPolicy
      */
     public function forceDelete(Usuario $usuario, OpcionRequisito $opcionRequisito): bool
     {
-        //
+        return false;
     }
 }

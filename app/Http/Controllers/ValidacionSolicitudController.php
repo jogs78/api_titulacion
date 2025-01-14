@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ValidacionSolicitud;
 use App\Http\Requests\StoreValidacionSolicitudRequest;
 use App\Http\Requests\UpdateValidacionSolicitudRequest;
+use Illuminate\Support\Facades\Gate;
 
 class ValidacionSolicitudController extends Controller
 {
@@ -13,7 +14,12 @@ class ValidacionSolicitudController extends Controller
      */
     public function index()
     {
-        //
+        if(Gate::allows('viewAny', ValidacionSolicitud::class)){
+            $validacionSolicitud = ValidacionSolicitud::all();
+            return response()->json($validacionSolicitud, 200);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -21,7 +27,16 @@ class ValidacionSolicitudController extends Controller
      */
     public function store(StoreValidacionSolicitudRequest $request)
     {
-        //
+        if (Gate::allows('create', ValidacionSolicitud::class)) {
+            // Crear tramite
+            $validacionSolicitud = new ValidacionSolicitud();
+            $datos = $request->all();
+            $validacionSolicitud->fill($datos);
+            $validacionSolicitud->save();
+            return response()->json($validacionSolicitud, 201);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -29,7 +44,12 @@ class ValidacionSolicitudController extends Controller
      */
     public function show(ValidacionSolicitud $validacionSolicitud)
     {
-        //
+        if (Gate::allows('view', $validacionSolicitud)) {
+            return response()->json($validacionSolicitud);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
+        $data = ValidacionSolicitud::find($validacionSolicitud);
     }
 
     /**
@@ -37,7 +57,17 @@ class ValidacionSolicitudController extends Controller
      */
     public function update(UpdateValidacionSolicitudRequest $request, ValidacionSolicitud $validacionSolicitud)
     {
-        //
+        if (Gate::allows('update', $validacionSolicitud)) {
+            $datos = $request->all();
+
+            $validacionSolicitud->fill($datos);
+            $validacionSolicitud->load('documento_solicitud_id', 'egresado_id',); // Cargar relaciones necesarias
+            $validacionSolicitud->save();
+
+            return response()->json($validacionSolicitud);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para actualizar este trámite'], 403);
+        }
     }
 
     /**
@@ -45,6 +75,12 @@ class ValidacionSolicitudController extends Controller
      */
     public function destroy(ValidacionSolicitud $validacionSolicitud)
     {
-        //
+        if (Gate::allows('delete', $validacionSolicitud)) {
+            $validacionSolicitud->delete();
+
+            return response()->json(['message' => 'Trámite eliminado correctamente']);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para eliminar este trámite'], 403);
+        }
     }
 }

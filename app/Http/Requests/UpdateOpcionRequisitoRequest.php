@@ -11,7 +11,7 @@ class UpdateOpcionRequisitoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateOpcionRequisitoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'opcion_titulacion_id' => 'sometimes|integer|exists:opciones_titulacion,id',
+            'documento_requerido' => 'sometimes|string|max:255',
+            'descripcion' => 'sometimes|nullable|string|max:500',
+            'tipo' => 'sometimes|string|in:PDF,Imagen,Fotografia', // Valida los tipos permitidos
         ];
     }
 }

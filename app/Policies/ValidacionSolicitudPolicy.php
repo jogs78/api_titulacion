@@ -13,7 +13,7 @@ class ValidacionSolicitudPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -21,7 +21,7 @@ class ValidacionSolicitudPolicy
      */
     public function view(Usuario $usuario, ValidacionSolicitud $validacionSolicitud): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo', 'App\Models\Egresado']);
     }
 
     /**
@@ -29,7 +29,7 @@ class ValidacionSolicitudPolicy
      */
     public function create(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -37,7 +37,7 @@ class ValidacionSolicitudPolicy
      */
     public function update(Usuario $usuario, ValidacionSolicitud $validacionSolicitud): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -45,7 +45,7 @@ class ValidacionSolicitudPolicy
      */
     public function delete(Usuario $usuario, ValidacionSolicitud $validacionSolicitud): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -53,7 +53,7 @@ class ValidacionSolicitudPolicy
      */
     public function restore(Usuario $usuario, ValidacionSolicitud $validacionSolicitud): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class ValidacionSolicitudPolicy
      */
     public function forceDelete(Usuario $usuario, ValidacionSolicitud $validacionSolicitud): bool
     {
-        //
+        return false;
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('plan_estudio_id')->constrained('plan_estudios');
             $table->string('documento_requerido');
             $table->text('descripcion');
-            $table->enum('tipo', ['PDF', 'imagen', 'Fotografia']);
+            $table->enum('tipo', ['PDF', 'Imagen', 'Fotografia']);
             $table->timestamps();
         });
     }

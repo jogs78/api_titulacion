@@ -11,7 +11,7 @@ class StorePlanRequisitoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StorePlanRequisitoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'plan_estudio_id' => 'required|integer|exists:plan_estudios,id',
+            'documento_requerido' => 'required|string|max:255',
+            'descripcion' => 'nullable|string|max:500',
+            'tipo' => 'required|string|in:PDF,Imagen,Fotografia',
         ];
     }
 }

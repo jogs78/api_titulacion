@@ -11,7 +11,7 @@ class StoreTitulacionOpcionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreTitulacionOpcionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'tiempo_maximo' => 'required|integer|min:1',
         ];
     }
 }

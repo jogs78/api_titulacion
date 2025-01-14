@@ -13,7 +13,7 @@ class PlanRequisitoPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo', 'App\Models\Egresado', 'App\Models\Docente']);
     }
 
     /**
@@ -21,7 +21,7 @@ class PlanRequisitoPolicy
      */
     public function view(Usuario $usuario, PlanRequisito $planRequisito): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo', 'App\Models\Egresado', 'App\Models\Docente']);
     }
 
     /**
@@ -29,7 +29,7 @@ class PlanRequisitoPolicy
      */
     public function create(Usuario $usuario): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -37,7 +37,7 @@ class PlanRequisitoPolicy
      */
     public function update(Usuario $usuario, PlanRequisito $planRequisito): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -45,7 +45,7 @@ class PlanRequisitoPolicy
      */
     public function delete(Usuario $usuario, PlanRequisito $planRequisito): bool
     {
-        //
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -53,7 +53,7 @@ class PlanRequisitoPolicy
      */
     public function restore(Usuario $usuario, PlanRequisito $planRequisito): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class PlanRequisitoPolicy
      */
     public function forceDelete(Usuario $usuario, PlanRequisito $planRequisito): bool
     {
-        //
+        return false;
     }
 }

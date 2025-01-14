@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Docente;
 use App\Http\Requests\StoreDocenteRequest;
 use App\Http\Requests\UpdateDocenteRequest;
+use Illuminate\Support\Facades\Gate;
 
 class DocenteController extends Controller
 {
@@ -13,16 +14,12 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        $tramites = Docente::all();
-        return response()->json($tramites, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        if(Gate::allows('viewAny', Docente::class)){
+            $docente = Docente::all();
+            return response()->json($docente, 200);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -30,7 +27,16 @@ class DocenteController extends Controller
      */
     public function store(StoreDocenteRequest $request)
     {
-        //
+        if (Gate::allows('create', Docente::class)) {
+            // Crear tramite
+            $docente = new Docente();
+            $datos = $request->all();
+            $docente->fill($datos);
+            $docente->save();
+            return response()->json($docente, 201);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -38,15 +44,12 @@ class DocenteController extends Controller
      */
     public function show(Docente $docente)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Docente $docente)
-    {
-        //
+        if (Gate::allows('view', $docente)) {
+            return response()->json($docente);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
+        $data = Docente::find($docente);
     }
 
     /**
@@ -54,7 +57,17 @@ class DocenteController extends Controller
      */
     public function update(UpdateDocenteRequest $request, Docente $docente)
     {
-        //
+        if (Gate::allows('update', $docente)) {
+            $datos = $request->all();
+
+            // Actualizar relaciones si es necesario
+            $docente->fill($datos);
+            $docente->save();
+
+            return response()->json($docente);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para actualizar este trámite'], 403);
+        }
     }
 
     /**
@@ -62,6 +75,12 @@ class DocenteController extends Controller
      */
     public function destroy(Docente $docente)
     {
-        //
+        if (Gate::allows('delete', $docente)) {
+            $docente->delete();
+
+            return response()->json(['message' => 'Trámite eliminado correctamente']);
+        } else {
+            return response()->json(['message' => 'No tienes permisos para eliminar este trámite'], 403);
+        }
     }
 }

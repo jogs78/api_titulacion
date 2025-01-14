@@ -15,8 +15,12 @@ class ActoDocenteController extends Controller
      */
     public function index()
     {
-        $actodocentes = ActoDocente::all();
-            return response()->json($actodocentes, 200);
+        if(Gate::allows('viewAny', Acto::class)){
+            $actoDocente = Acto::all();
+            return response()->json($actoDocente, 200);
+        } else {
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
     }
 
     /**
@@ -26,11 +30,11 @@ class ActoDocenteController extends Controller
     {
         if (Gate::allows('create', ActoDocente::class)) {
             // Crear tramite
-            $actodocente = new ActoDocente();
+            $actoDocente = new ActoDocente();
             $datos = $request->all();
-            $actodocente->fill($datos);
-            $actodocente->save();
-            return response()->json($actodocente, 201);
+            $actoDocente->fill($datos);
+            $actoDocente->save();
+            return response()->json($actoDocente, 201);
         } else {
             return response()->json(['error' => 'No autorizado'], 403);
         }
