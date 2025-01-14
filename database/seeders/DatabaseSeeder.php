@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TramiteSeeder::class);
         $this->call(PlanRequisitoSeeder::class);
         $this->call(OpcionRequisitoSeeder::class);
+        $this->call(EspecialidadPlanEstudioSeeder::class);
 
 
     }

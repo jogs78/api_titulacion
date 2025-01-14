@@ -6,6 +6,7 @@ use App\Models\DocumentoSolicitud;
 use App\Http\Requests\StoreDocumentoSolicitudRequest;
 use App\Http\Requests\UpdateDocumentoSolicitudRequest;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentoSolicitudController extends Controller
 {
@@ -74,6 +75,9 @@ class DocumentoSolicitudController extends Controller
     public function destroy(DocumentoSolicitud $documentoSolicitud)
     {
         if (Gate::allows('delete', $documentoSolicitud)) {
+
+            //borrar el archivo fisicamente
+            Storage::disk('privadas')->delete($documentoSolicitud->ruta);
             $documentoSolicitud->delete();
 
             return response()->json(['message' => 'Trámite eliminado correctamente']);

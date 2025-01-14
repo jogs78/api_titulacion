@@ -10,9 +10,9 @@ class PlanEstudio extends Model
     protected $fillable = ['fecha_inicio', 'numero_creditos', 'especialidad_id'];
     use HasFactory;
 
-    public function especialidad()
+    public function EspecialidadPlanEstudio()
     {
-        return $this->belongsTo(Especialidad::class);
+        return $this->hasMany(EspecialidadPlanEstudio::class);
     }
 
     public function planEstudiosTitulacionOpcion()

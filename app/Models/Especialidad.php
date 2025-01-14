@@ -11,7 +11,7 @@ class Especialidad extends Model
     protected $fillable = ['nombre'];
     use HasFactory;
 
-    public function planEstudios(){
-        return $this->hasMany(PlanEstudio::class, 'especialidad0_id');
+    public function EspecialidadPlanEstudios(){
+        return $this->hasMany(EspecialidadPlanEstudio::class, 'especialidad_id');
     }
 }

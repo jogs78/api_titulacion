@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Especialidad;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plan_estudios', function (Blueprint $table) {
+        Schema::create('especialidad_plan_estudios', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_inicio');
-            $table->integer("numero_creditos");
+            $table->foreignId('especialidad_id')->constrained('especialidades');
+            $table->foreignId('plan_estudio_id')->constrained();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plan_estudios');
+        Schema::dropIfExists('especialidad_plan_estudios');
     }
 };
