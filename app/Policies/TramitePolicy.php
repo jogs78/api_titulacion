@@ -17,13 +17,13 @@ class TramitePolicy
     {
 
         ob_start();
-        var_dump(in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']));
+        var_dump(in_array($usuario->actual_type, ['App\Models\Administrativo']));
         var_dump($usuario->nombre_usuario);
         $result = ob_get_clean();
 
         Log::channel('debug')->info('Usuario Autorizado '.$result);
 
-        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
 
 
     }
@@ -33,8 +33,18 @@ class TramitePolicy
      */
     public function view(Usuario $usuario, Tramite $tramite): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
-        
+        $usuario = auth()->user();
+            if (($usuario->actual_type === 'App\Models\Egresado') && ($usuario->actual_id === $tramite->egresado_id)) {
+                return true;
+            }
+
+            // Check if the user is an administrador
+            if ($usuario->actual_type === 'App\Models\Administrativo') {
+                return true;
+            }
+
+            return false;
+
 
     }
 

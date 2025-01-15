@@ -45,11 +45,12 @@ class TramiteController extends Controller
     public function show(Tramite $tramite)
     {
         if (Gate::allows('view', $tramite)) {
-            return response()->json($tramite);
+
+            return response()->json($tramite, 201);
         } else {
             return response()->json(['error' => 'No autorizado'], 403);
         }
-        $data = Tramite::find($tramite);
+
 
 
     }
