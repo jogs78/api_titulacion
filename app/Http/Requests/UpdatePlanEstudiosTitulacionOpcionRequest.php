@@ -26,4 +26,18 @@ class UpdatePlanEstudiosTitulacionOpcionRequest extends FormRequest
             'titulacion_opcion_id' => 'sometimes|integer|exists:titulacion_opciones,id',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'plan_estudios_id.sometimes' => 'El plan de estudios es opcional',
+            'plan_estudios_id.integer' => 'El plan de estudios debe ser un número entero',
+            'plan_estudios_id.exists' => 'El plan de estudios no existe',
+
+            'titulacion_opcion_id.sometimes' => 'La opción de titulación es opcional',
+            'titulacion_opcion_id.integer' => 'La opción de titulación debe ser un número entero',
+            'titulacion_opcion_id.exists' => 'La opción de titulación no existe',
+    ];
+    }
+
 }

@@ -27,4 +27,20 @@ class UpdateComiteDocenteRequest extends FormRequest
             'cargo' => ['required', 'string', 'max:255'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'comite_id.required' => 'El comité es requerido',
+            'comite_id.exists' => 'El comité seleccionado no existe',
+
+            'docente_id.required' => 'El docente es requerido',
+            'docente_id.exists' => 'El docente seleccionado no existe',
+
+            'cargo.required' => 'El cargo es requerido',
+            'cargo.string' => 'El cargo debe ser una cadena de texto',
+            'cargo.max' => 'El cargo no debe exceder los 255 caracteres',
+    ];
+    }
+
 }

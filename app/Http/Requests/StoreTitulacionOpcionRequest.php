@@ -27,4 +27,21 @@ class StoreTitulacionOpcionRequest extends FormRequest
             'tiempo_maximo' => 'required|integer|min:1',
         ];
     }
+
+    public function messages()
+    {
+    return [
+        'nombre.required' => 'El nombre es requerido',
+        'nombre.string' => 'El nombre debe ser una cadena de texto',
+        'nombre.max' => 'El nombre no debe exceder los 255 caracteres',
+
+        'descripcion.required' => 'La descripción es requerida',
+        'descripcion.string' => 'La descripción debe ser una cadena de texto',
+
+        'tiempo_maximo.required' => 'El tiempo máximo es requerido',
+        'tiempo_maximo.integer' => 'El tiempo máximo debe ser un número entero',
+        'tiempo_maximo.min' => 'El tiempo máximo debe ser al menos 1',
+    ];
+    }
+
 }

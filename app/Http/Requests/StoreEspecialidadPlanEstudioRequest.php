@@ -26,4 +26,18 @@ class StoreEspecialidadPlanEstudioRequest extends FormRequest
             'plan_estudio_id' => 'required|integer|exists:plan_estudios,id',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'especialidad_id.required' => 'La especialidad es requerida',
+            'especialidad_id.integer' => 'La especialidad debe ser un número entero',
+            'especialidad_id.exists' => 'La especialidad seleccionada no existe',
+
+            'plan_estudio_id.required' => 'El plan de estudios es requerido',
+            'plan_estudio_id.integer' => 'El plan de estudios debe ser un número entero',
+            'plan_estudio_id.exists' => 'El plan de estudios seleccionado no existe',
+        ];
+    }
+
 }

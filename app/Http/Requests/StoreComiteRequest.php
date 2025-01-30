@@ -26,4 +26,17 @@ class StoreComiteRequest extends FormRequest
             'especificacion' => ['required', 'string', 'max:255'],
         ];
     }
+
+    public function messages()
+    {
+    return [
+        'plan_estudio_id.required' => 'El plan de estudios es requerido',
+        'plan_estudio_id.exists' => 'El plan de estudios seleccionado no existe',
+
+        'especificacion.required' => 'La especificación es requerida',
+        'especificacion.string' => 'La especificación debe ser una cadena de texto',
+        'especificacion.max' => 'La especificación no debe exceder los 255 caracteres',
+    ];
+    }
+
 }

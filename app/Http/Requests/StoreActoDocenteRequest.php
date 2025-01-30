@@ -27,4 +27,18 @@ class StoreActoDocenteRequest extends FormRequest
             'sinodal' => ['required', 'in:presidente,secretario,suplente'],
         ];
     }
+
+    public function messages()
+    {
+    return [
+        'acto_id.required' => 'El acto es requerido',
+        'acto_id.exists' => 'El acto seleccionado no existe',
+
+        'docente_id.required' => 'El docente es requerido',
+        'docente_id.exists' => 'El docente seleccionado no existe',
+
+        'sinodal.required' => 'El rol de sinodal es requerido',
+        'sinodal.in' => 'El rol de sinodal debe ser presidente, secretario o suplente',
+    ];
+    }
 }

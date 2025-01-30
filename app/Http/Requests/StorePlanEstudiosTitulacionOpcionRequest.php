@@ -26,4 +26,18 @@ class StorePlanEstudiosTitulacionOpcionRequest extends FormRequest
             'titulacion_opcion_id' => 'required|integer|exists:titulacion_opciones,id',
         ];
     }
+
+    public function messages()
+    {
+    return [
+        'plan_estudios_id.required' => 'El plan de estudios es requerido',
+        'plan_estudios_id.integer' => 'El plan de estudios debe ser un número entero',
+        'plan_estudios_id.exists' => 'El plan de estudios seleccionado no existe',
+
+        'titulacion_opcion_id.required' => 'La opción de titulación es requerida',
+        'titulacion_opcion_id.integer' => 'La opción de titulación debe ser un número entero',
+        'titulacion_opcion_id.exists' => 'La opción de titulación seleccionada no existe',
+    ];
+    }
+
 }

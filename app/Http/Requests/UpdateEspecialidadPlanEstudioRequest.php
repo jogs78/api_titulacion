@@ -26,4 +26,16 @@ class UpdateEspecialidadPlanEstudioRequest extends FormRequest
             'plan_estudio_id' => 'sometimes|integer|exists:plan_estudios,id',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'especialidad_id.integer' => 'El ID de la especialidad debe ser un número entero',
+            'especialidad_id.exists' => 'La especialidad no existe',
+
+            'plan_estudio_id.integer' => 'El ID del plan de estudios debe ser un número entero',
+            'plan_estudio_id.exists' => 'El plan de estudios no existe',
+    ];
+    }
+
 }

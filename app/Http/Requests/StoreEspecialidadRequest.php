@@ -25,4 +25,15 @@ class StoreEspecialidadRequest extends FormRequest
             'nombre' => 'required|string|max:255|unique:especialidades,nombre',
         ];
     }
+
+    public function messages()
+    {
+    return [
+        'nombre.required' => 'El nombre es requerido',
+        'nombre.string' => 'El nombre debe ser una cadena de texto',
+        'nombre.max' => 'El nombre no debe exceder los 255 caracteres',
+        'nombre.unique' => 'El nombre ya existe en el sistema',
+    ];
+    }
+
 }

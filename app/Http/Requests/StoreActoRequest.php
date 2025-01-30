@@ -28,4 +28,23 @@ class StoreActoRequest extends FormRequest
             'lugar' => 'required|string|max:256',
         ];
     }
+
+    public function messages()
+    {
+    return [
+        'modalidad.required' => 'La modalidad es requerida',
+        'modalidad.string' => 'La modalidad debe ser una cadena de texto',
+        'modalidad.max' => 'La modalidad no debe exceder los 256 caracteres',
+
+        'fecha.required' => 'La fecha es requerida',
+        'fecha.date' => 'La fecha debe ser una fecha válida',
+
+        'hora.required' => 'La hora es requerida',
+        'hora.date_format' => 'La hora debe tener el formato HH:MM',
+
+        'lugar.required' => 'El lugar es requerido',
+        'lugar.string' => 'El lugar debe ser una cadena de texto',
+        'lugar.max' => 'El lugar no debe exceder los 256 caracteres',
+    ];
+    }
 }

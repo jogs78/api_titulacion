@@ -30,6 +30,10 @@ class PuertaController extends Controller
             Log::channel('bitacora')->info("inicio de sesion : ".$usuario_encontrado->nombre_usuario);
             $usuario_actual = $usuario_encontrado->actual;
             $usuario_actual->token = $usuario_encontrado->token;
+
+
+
+
             return response()->json($usuario_encontrado->actual,200);
         }
         return response()->json(["Autenticar a $usuario"],200);

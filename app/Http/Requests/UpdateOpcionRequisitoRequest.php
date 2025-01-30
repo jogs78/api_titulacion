@@ -28,4 +28,22 @@ class UpdateOpcionRequisitoRequest extends FormRequest
             'tipo' => 'sometimes|string|in:PDF,Imagen,Fotografia', // Valida los tipos permitidos
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'opcion_titulacion_id.integer' => 'El ID de la opción de titulación debe ser un número entero',
+            'opcion_titulacion_id.exists' => 'La opción de titulación no existe',
+
+            'documento_requerido.string' => 'El documento requerido debe ser una cadena de texto',
+            'documento_requerido.max' => 'El documento requerido no debe exceder los 255 caracteres',
+
+            'descripcion.string' => 'La descripción debe ser una cadena de texto',
+            'descripcion.max' => 'La descripción no debe exceder los 500 caracteres',
+
+            'tipo.string' => 'El tipo debe ser una cadena de texto',
+            'tipo.in' => 'El tipo debe ser uno de los siguientes valores: PDF, Imagen, Fotografía',
+    ];
+    }
+
 }

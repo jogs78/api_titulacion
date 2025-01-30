@@ -27,4 +27,21 @@ class UpdateTitulacionOpcionRequest extends FormRequest
             'tiempo_maximo' => 'sometimes|integer|min:1',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nombre.sometimes' => 'El nombre es opcional',
+            'nombre.string' => 'El nombre debe ser una cadena de texto',
+            'nombre.max' => 'El nombre no puede exceder los 255 caracteres',
+
+            'descripcion.sometimes' => 'La descripción es opcional',
+            'descripcion.string' => 'La descripción debe ser una cadena de texto',
+
+            'tiempo_maximo.sometimes' => 'El tiempo máximo es opcional',
+            'tiempo_maximo.integer' => 'El tiempo máximo debe ser un número entero',
+            'tiempo_maximo.min' => 'El tiempo máximo debe ser al menos 1',
+    ];
+    }
+
 }

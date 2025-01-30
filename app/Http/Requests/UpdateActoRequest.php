@@ -28,4 +28,20 @@ class UpdateActoRequest extends FormRequest
             'lugar' => 'sometimes|string|max:256',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'modalidad.string' => 'La modalidad debe ser una cadena de texto',
+            'modalidad.max' => 'La modalidad no debe exceder los 256 caracteres',
+
+            'fecha.date' => 'La fecha debe ser una fecha válida',
+
+            'hora.date_format' => 'La hora debe tener el formato HH:mm',
+
+            'lugar.string' => 'El lugar debe ser una cadena de texto',
+            'lugar.max' => 'El lugar no debe exceder los 256 caracteres',
+    ];
+    }
+
 }

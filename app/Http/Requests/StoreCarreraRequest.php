@@ -26,4 +26,19 @@ class StoreCarreraRequest extends FormRequest
            'clave' => 'required|string|max:20|unique:carreras,clave',
         ];
     }
+
+    public function messages()
+    {
+    return [
+        'nombre.required' => 'El nombre es requerido',
+        'nombre.string' => 'El nombre debe ser una cadena de texto',
+        'nombre.max' => 'El nombre no debe exceder los 255 caracteres',
+        'nombre.unique' => 'El nombre ya existe en el sistema',
+
+        'clave.required' => 'La clave es requerida',
+        'clave.string' => 'La clave debe ser una cadena de texto',
+        'clave.max' => 'La clave no debe exceder los 20 caracteres',
+        'clave.unique' => 'La clave ya existe en el sistema',
+    ];
+    }
 }

@@ -26,4 +26,18 @@ class UpdateCarreraRequest extends FormRequest
             'clave' => 'sometimes|string|max:20|unique:carreras,clave,',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nombre.string' => 'El nombre debe ser una cadena de texto',
+            'nombre.max' => 'El nombre no debe exceder los 255 caracteres',
+            'nombre.unique' => 'Este nombre ya está registrado en las carreras',
+
+            'clave.string' => 'La clave debe ser una cadena de texto',
+            'clave.max' => 'La clave no debe exceder los 20 caracteres',
+            'clave.unique' => 'Esta clave ya está registrada en las carreras',
+    ];
+    }
+
 }

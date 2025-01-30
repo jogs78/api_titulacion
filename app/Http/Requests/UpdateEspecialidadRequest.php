@@ -25,4 +25,14 @@ class UpdateEspecialidadRequest extends FormRequest
             'nombre' => 'sometimes|string|max:255|unique:especialidades,nombre',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nombre.string' => 'El nombre debe ser una cadena de texto',
+            'nombre.max' => 'El nombre no debe exceder los 255 caracteres',
+            'nombre.unique' => 'Ya existe una especialidad con ese nombre',
+    ];
+    }
+
 }

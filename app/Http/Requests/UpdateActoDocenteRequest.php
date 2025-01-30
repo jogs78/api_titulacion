@@ -27,4 +27,16 @@ class UpdateActoDocenteRequest extends FormRequest
             'sinodal' => ['sometimes', 'in:presidente,secretario,suplente'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'acto_id.exists' => 'El acto seleccionado no existe',
+
+            'docente_id.exists' => 'El docente seleccionado no existe',
+
+            'sinodal.in' => 'El sinodal debe ser uno de los siguientes valores: presidente, secretario, suplente',
+    ];
+    }
+
 }

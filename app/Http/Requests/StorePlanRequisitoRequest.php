@@ -28,4 +28,25 @@ class StorePlanRequisitoRequest extends FormRequest
             'tipo' => 'required|string|in:PDF,Imagen,Fotografia',
         ];
     }
+
+    public function messages()
+    {
+    return [
+        'plan_estudio_id.required' => 'El plan de estudios es requerido',
+        'plan_estudio_id.integer' => 'El plan de estudios debe ser un número entero',
+        'plan_estudio_id.exists' => 'El plan de estudios seleccionado no existe',
+
+        'documento_requerido.required' => 'El documento requerido es obligatorio',
+        'documento_requerido.string' => 'El documento requerido debe ser una cadena de texto',
+        'documento_requerido.max' => 'El documento requerido no debe exceder los 255 caracteres',
+
+        'descripcion.string' => 'La descripción debe ser una cadena de texto',
+        'descripcion.max' => 'La descripción no debe exceder los 500 caracteres',
+
+        'tipo.required' => 'El tipo de archivo es requerido',
+        'tipo.string' => 'El tipo de archivo debe ser una cadena de texto',
+        'tipo.in' => 'El tipo de archivo debe ser uno de los siguientes: PDF, Imagen, Fotografía',
+    ];
+    }
+
 }
