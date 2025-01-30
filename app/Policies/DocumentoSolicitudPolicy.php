@@ -21,7 +21,17 @@ class DocumentoSolicitudPolicy
      */
     public function view(Usuario $usuario, DocumentoSolicitud $documentoSolicitud): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Egresado']);
+        $usuario = auth()->user();
+            if (($usuario->actual_type === 'App\Models\Egresado') && ($usuario->actual_id === $documentoSolicitud->egresado_id)) {
+                return true;
+            }
+
+            // Check if the user is an administrador
+            if ($usuario->actual_type === 'App\Models\Administrativo') {
+                return true;
+            }
+
+            return false;
     }
 
     /**
@@ -37,7 +47,7 @@ class DocumentoSolicitudPolicy
      */
     public function update(Usuario $usuario, DocumentoSolicitud $documentoSolicitud): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Egresado','App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**

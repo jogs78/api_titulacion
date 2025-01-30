@@ -57,8 +57,11 @@ Route::apiResource("actos",ActoController::class)->middleware('existe');
 Route::apiResource("documentotitulaciones",DocumentoTitulacionController::class)->middleware('existe');
 Route::apiResource("validaciontitulaciones",ValidacionSolicitudController::class)->middleware('existe');
 Route::apiResource("administrativos",AdministrativoController::class)->middleware('existe');
-#Route::apiResource("planesestudiostitulacionesopciones",PlanEstudiosTitulacionOpcionController::class)->middleware('existe');
 Route::apiResource("petopciones",PlanEstudiosTitulacionOpcionController::class)->middleware('existe');
 Route::apiResource("actosdocentes",ActoDocenteController::class)->middleware('existe');
 Route::apiResource("comitesdocentes",ComiteDocenteController::class)->middleware('existe');
 Route::apiResource("especiadadplanestudios",EspecialidadPlanEstudioController::class)->middleware('existe');
+
+
+
+#Route::apiResource("planesestudiostitulacionesopciones",PlanEstudiosTitulacionOpcionController::class)->middleware('existe');

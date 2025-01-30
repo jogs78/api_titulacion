@@ -21,7 +21,17 @@ class ActoDocentePolicy
      */
     public function view(Usuario $usuario, ActoDocente $actoDocente): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        $usuario = auth()->user();
+            if (($usuario->actual_type === 'App\Models\Docente') && ($usuario->actual_id === $actoDocente->docente_id)) {
+                return true;
+            }
+
+            // Check if the user is an administrador
+            if ($usuario->actual_type === 'App\Models\Administrativo') {
+                return true;
+            }
+
+            return false;
     }
 
     /**
@@ -29,7 +39,7 @@ class ActoDocentePolicy
      */
     public function create(Usuario $usuario): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -37,7 +47,7 @@ class ActoDocentePolicy
      */
     public function update(Usuario $usuario, ActoDocente $actoDocente): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -45,7 +55,7 @@ class ActoDocentePolicy
      */
     public function delete(Usuario $usuario, ActoDocente $actoDocente): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**

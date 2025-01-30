@@ -13,7 +13,7 @@ class PlanRequisitoPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Administrativo', 'App\Models\Egresado', 'App\Models\Docente']);
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Docente']);
     }
 
     /**
@@ -21,7 +21,7 @@ class PlanRequisitoPolicy
      */
     public function view(Usuario $usuario, PlanRequisito $planRequisito): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Administrativo', 'App\Models\Egresado', 'App\Models\Docente']);
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Docente']);
     }
 
     /**

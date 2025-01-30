@@ -13,7 +13,7 @@ class PlanEstudioPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        return true;
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**
@@ -21,11 +21,7 @@ class PlanEstudioPolicy
      */
     public function view(Usuario $usuario, PlanEstudio $planEstudio): bool
     {
-/*
-        if($usuario->carrera == $planEstudio->carrera) return true;
-        else return false;
-*/
-    return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**

@@ -17,7 +17,16 @@ class EgresadoPolicy
      */
     public function view(Usuario $usuario, Egresado $egresado): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Dcoente', 'App\Models\Estudiante', 'App\Models\Administrativo']);
+        $usuario = auth()->user();
+            if (($usuario->actual_type === 'App\Models\Egresado') && ($usuario->actual_id === $egresado->id)) {
+                return true;
+            }
+            // Check if the user is an administrador
+            if ($usuario->actual_type === 'App\Models\Administrativo') {
+                return true;
+            }
+            return false;
+
     }
     /**
      * Determine whether the user can create models.
@@ -31,7 +40,15 @@ class EgresadoPolicy
      */
     public function update(Usuario $usuario, Egresado $egresado): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Administrativo', 'App\Models\Eegresado']);
+        $usuario = auth()->user();
+        if (($usuario->actual_type === 'App\Models\Egresado') && ($usuario->actual_id === $egresado->id)) {
+            return true;
+        }
+        // Check if the user is an administrador
+        if ($usuario->actual_type === 'App\Models\Administrativo') {
+            return true;
+        }
+        return false;
     }
     /**
      * Determine whether the user can delete the model.

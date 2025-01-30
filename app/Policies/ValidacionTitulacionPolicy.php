@@ -13,7 +13,7 @@ class ValidacionTitulacionPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Egresado','App\Models\Administrativo']);
     }
 
     /**

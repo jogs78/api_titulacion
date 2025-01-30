@@ -13,7 +13,7 @@ class EspecialidadPlanEstudioPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**

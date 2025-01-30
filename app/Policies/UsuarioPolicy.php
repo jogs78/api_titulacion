@@ -18,7 +18,15 @@ class UsuarioPolicy
      */
     public function view(usuario $usuario, Usuario $model): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo', 'App\Models\Egresado']);
+        $usuario = auth()->user();
+        if (($usuario->actual_type === 'App\Models\Egresado') && ($usuario->actual_id === $model->id)) {
+            return true;
+        }
+        // Check if the user is an administrador
+        if ($usuario->actual_type === 'App\Models\Administrativo') {
+            return true;
+        }
+        return false;
     }
     /**
      * Determine whether the user can create models.
@@ -27,7 +35,7 @@ class UsuarioPolicy
     {
         return true;
     }
-    
+
     /**
      * Determine whether the user can update the model.
      */

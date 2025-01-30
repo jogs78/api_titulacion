@@ -21,7 +21,7 @@ class AdministrativoPolicy
      */
     public function view(Usuario $usuario, Administrativo $administrativo): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return $usuario->actual_type === 'App\Models\Administrativo' && $usuario->actual_id === $administrativo->id;
     }
 
     /**
@@ -29,7 +29,7 @@ class AdministrativoPolicy
      */
     public function create(Usuario $usuario): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -37,7 +37,7 @@ class AdministrativoPolicy
      */
     public function update(Usuario $usuario, Administrativo $administrativo): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -45,7 +45,7 @@ class AdministrativoPolicy
      */
     public function delete(Usuario $usuario, Administrativo $administrativo): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**

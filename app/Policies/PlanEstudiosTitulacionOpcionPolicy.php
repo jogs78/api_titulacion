@@ -13,7 +13,7 @@ class PlanEstudiosTitulacionOpcionPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo', 'App\Models\Egresado']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo', 'App\Models\Egresado']);
     }
 
     /**

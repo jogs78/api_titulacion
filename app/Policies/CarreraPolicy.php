@@ -21,7 +21,7 @@ class CarreraPolicy
      */
     public function view(Usuario $usuario, Carrera $carrera): bool
     {
-        return in_array($usuario->actual_type, [ 'App\Models\Administrativo', 'App\Models\Egresado', 'App\Models\Docente' ]);
+        return in_array($usuario->actual_type, [ 'App\Models\Administrativo']);
     }
 
     /**

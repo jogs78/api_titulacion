@@ -17,7 +17,7 @@ class EspecialidadPolicy
      */
     public function view(Usuario $usuario, Especialidad $especilidad): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Egresado',]);
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
     /**
      * Determine whether the user can create models.

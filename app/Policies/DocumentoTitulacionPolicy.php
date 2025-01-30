@@ -21,7 +21,17 @@ class DocumentoTitulacionPolicy
      */
     public function view(Usuario $usuario, DocumentoTitulacion $documentoTitulacion): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Egresado']);
+        $usuario = auth()->user();
+            if (($usuario->actual_type === 'App\Models\Egresado') && ($usuario->actual_id === $documentoTitulacion->egresado_id)) {
+                return true;
+            }
+
+            // Check if the user is an administrador
+            if ($usuario->actual_type === 'App\Models\Administrativo') {
+                return true;
+            }
+
+            return false;
     }
 
     /**
@@ -29,7 +39,7 @@ class DocumentoTitulacionPolicy
      */
     public function create(Usuario $usuario): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**
@@ -37,7 +47,7 @@ class DocumentoTitulacionPolicy
      */
     public function update(Usuario $usuario, DocumentoTitulacion $documentoTitulacion): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Administrativo']);
     }
 
     /**

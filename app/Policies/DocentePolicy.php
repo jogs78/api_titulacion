@@ -12,14 +12,24 @@ class DocentePolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        return in_array($usuario->actual_type, [ 'App\Models\Administrativo', 'App\Models\Docente' ]);
+        return in_array($usuario->actual_type, [ 'App\Models\Administrativo',]);
     }
     /**
      * Determine whether the user can view the model.
      */
     public function view(Usuario $usuario, Docente $docente): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        $usuario = auth()->user();
+            if (($usuario->actual_type === 'App\Models\Docente') && ($usuario->actual_id === $docente->id)) {
+                return true;
+            }
+
+            // Check if the user is an administrador
+            if ($usuario->actual_type === 'App\Models\Administrativo') {
+                return true;
+            }
+
+            return false;
     }
     /**
      * Determine whether the user can create models.

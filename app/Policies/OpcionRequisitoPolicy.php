@@ -13,7 +13,7 @@ class OpcionRequisitoPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**
@@ -21,7 +21,7 @@ class OpcionRequisitoPolicy
      */
     public function view(Usuario $usuario, OpcionRequisito $opcionRequisito): bool
     {
-        return in_array($usuario->actual_type, ['App\Models\Docente', 'App\Models\Administrativo']);
+        return in_array($usuario->actual_type, ['App\Models\Egresado', 'App\Models\Administrativo']);
     }
 
     /**
