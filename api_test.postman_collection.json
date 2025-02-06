@@ -1,0 +1,4303 @@
+{
+	"info": {
+		"_postman_id": "1d12b898-fb18-4fa8-b1b5-ab9ebe4d6000",
+		"name": "api_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34886098"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Auntenticar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code==200){\r",
+									"var variable = (pm.response.json())\r",
+									"pm.environment.set(\"token\",variable.token )\r",
+									"}else{\r",
+									"    console.log(\"No entra\")\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/autenticar/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"autenticar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "actual_type",
+									"value": "App\\Models\\Egresado",
+									"type": "text"
+								},
+								{
+									"key": "actual_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "nombre_usuario",
+									"value": "francisco",
+									"type": "text"
+								},
+								{
+									"key": "contraseña",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "expiracion",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/usuarios/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "actual_type",
+									"value": "App\\Models\\Egresado",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "actual_id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nombre_usuario",
+									"value": "francisco",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contraseña",
+									"value": "12345678",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "expiracion",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/usuarios/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "actual_type",
+									"value": "App\\Models\\Egresado",
+									"disabled": true
+								},
+								{
+									"key": "actual_id",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "nombre_usuario",
+									"value": "francisco",
+									"disabled": true
+								},
+								{
+									"key": "contraseña",
+									"value": "12345678",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "expiracion",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/usuarios/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "actual_type",
+									"value": "App\\Models\\Egresado",
+									"disabled": true
+								},
+								{
+									"key": "actual_id",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "nombre_usuario",
+									"value": "francisco",
+									"disabled": true
+								},
+								{
+									"key": "contraseña",
+									"value": "12345678",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "expiracion",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/usuarios/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "expiracion",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Egresados",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_materno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "numero_control",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "carrera_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "plan_estudio_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/egresados?",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"egresados"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/egresados",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"egresados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_materno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "numero_control",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "carrera_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "plan_estudio_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/egresados",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"egresados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/egresados",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"egresados"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Docentes",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_materno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "numero_control",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "cedula_profecional",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "profesion",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/docentes",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"docentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}api/docentes",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"docentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_materno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "numero_control",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "cedula_profecional",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "profesion",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/docentes",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"docentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}api/docentes",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"docentes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Administrativos",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_materno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "puesto",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/administrativos",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"administrativos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}api/administrativos",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"administrativos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_paterno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido_materno",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "puesto",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/administrativos",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"administrativos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}api/administrativos",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"administrativos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tramites",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "egresado_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "titulacion_opciones_id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "nombre_proyecto",
+									"value": "frontend api titulacion",
+									"type": "text"
+								},
+								{
+									"key": "liberacion",
+									"value": "pendiente",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "pendiente",
+									"type": "text"
+								},
+								{
+									"key": "paso",
+									"value": "iniciado",
+									"type": "text"
+								},
+								{
+									"key": "observaciones",
+									"value": "ninguna",
+									"type": "text"
+								},
+								{
+									"key": "pago",
+									"value": "pendiente",
+									"type": "text"
+								},
+								{
+									"key": "comite_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "acto_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/tramites/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"tramites",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/tramites/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"tramites",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "egresado_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "titulacion_opciones_id",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "nombre_proyecto",
+									"value": "creacion de documentos oficiales titulacion",
+									"type": "text"
+								},
+								{
+									"key": "liberacion",
+									"value": "pendiente",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "pendiente",
+									"type": "text"
+								},
+								{
+									"key": "paso",
+									"value": "iniciado",
+									"type": "text"
+								},
+								{
+									"key": "observaciones",
+									"value": "ninguna",
+									"type": "text"
+								},
+								{
+									"key": "pago",
+									"value": "pendiente",
+									"type": "text"
+								},
+								{
+									"key": "comite_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "acto_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/tramites/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"tramites",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/tramites/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"tramites",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PlanEstudios",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fecha_inicio",
+									"value": "1999-01-01",
+									"type": "text"
+								},
+								{
+									"key": "numero_creditos",
+									"value": "360",
+									"type": "text"
+								},
+								{
+									"key": "especialidad_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/planestudios",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"planestudios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/planestudios",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"planestudios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fecha_inicio",
+									"value": "1999-01-01",
+									"type": "text"
+								},
+								{
+									"key": "numero_creditos",
+									"value": "360",
+									"type": "text"
+								},
+								{
+									"key": "especialidad_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/planestudios",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"planestudios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/planestudios",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"planestudios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carreras",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/carreras/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"carreras",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/carreras/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"carreras",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/carreras/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"carreras",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/carreras/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"carreras",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Especialidades",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/especialidades/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"especialidades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/especialidades/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"especialidades",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/especialidades/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"especialidades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/especialidades/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"especialidades",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PlanRequisitos",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plan_estudio_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "documento_requerido",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/planesrequisitos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"planesrequisitos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/planesrequisitos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"planesrequisitos",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plan_estudio_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "documento_requerido",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/planesrequisitos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"planesrequisitos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/planesrequisitos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"planesrequisitos",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ValidacionSolicitudes",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ruta",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "validacion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "documento_solicitud_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "egresado_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/validacionsolicitudes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"validacionsolicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/validacionsolicitudes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"validacionsolicitudes",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ruta",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "validacion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "documento_solicitud_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "egresado_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/validacionsolicitudes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"validacionsolicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/validacionsolicitudes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"validacionsolicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comites",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plan_estudio_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "especifiacion",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/comites/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"comites",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/comites/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"comites",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plan_estudio_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "especifiacion",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/comites/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"comites",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/comites/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"comites",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ComiteDocentes",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "comite_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "docente_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "cargo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/comitesdocentes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"comitesdocentes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/comitesdocentes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"comitesdocentes",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "comite_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "docente_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "cargo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/comitesdocentes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"comitesdocentes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/comitesdocentes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"comitesdocentes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TitulacionOpciones",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tiempo_maximo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/titulacionopciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"titulacionopciones",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/titulacionopciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"titulacionopciones",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tiempo_maximo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/titulacionopciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"titulacionopciones",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/titulacionopciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"titulacionopciones",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OpcionRequisitos",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "opcion_titulacion_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "documento_requerido",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/opcionrequisitos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"opcionrequisitos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/opcionrequisitos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"opcionrequisitos",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "opcion_titulacion_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "documento_requerido",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/opcionrequisitos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"opcionrequisitos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/opcionrequisitos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"opcionrequisitos",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PlanEstudiosTitulacionOpciones",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plan_estudios_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "titulacion_opcion_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/petopciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"petopciones",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/petopciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"petopciones",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plan_estudios_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "titulacion_opcion_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/petopciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"petopciones",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/petopciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"petopciones",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ValidacionTitulaciones",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "documento_titulacion_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "motivo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/validaciontitulaciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"validaciontitulaciones",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/validaciontitulaciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"validaciontitulaciones",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "documento_titulacion_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "motivo",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/validaciontitulaciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"validaciontitulaciones",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/validaciontitulaciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"validaciontitulaciones",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actos",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "modalidad",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "fecha",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "hora",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "lugar",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/actos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"actos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/actos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"actos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "modalidad",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "fecha",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "hora",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "lugar",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/actos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"actos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/actos/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"actos",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ActosDocentes",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "acto_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "docente_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sinodal",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/actosdocentes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"actosdocentes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/actosdocentes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"actosdocentes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "acto_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "docente_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sinodal",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/actosdocentes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"actosdocentes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/actosdocentes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"actosdocentes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DocumentoSolicitudes",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ruta",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "validacion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "plan_estudios_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "egresado_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/documentossolicitudes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"documentossolicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/documentossolicitudes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"documentossolicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/documentossolicitudes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"documentossolicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/documentossolicitudes/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"documentossolicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DocumentoTitulaciones",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ruta",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "validacion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "opcion_requisto_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tramite_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/documentostitulaciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"documentostitulaciones",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}api/documentostitulaciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"documentostitulaciones",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ruta",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "validacion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "opcion_requisto_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tramite_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/documentostitulaciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"documentostitulaciones",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/documentostitulaciones/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"documentostitulaciones",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

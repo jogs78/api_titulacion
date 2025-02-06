@@ -69,6 +69,6 @@ class UsuarioSeeder extends Seeder
         $nuevo->nombre_usuario = "fanny";
         $nuevo->contraseña = Hash::make("123");
         $nuevo->save();
-        
+
     }
 }

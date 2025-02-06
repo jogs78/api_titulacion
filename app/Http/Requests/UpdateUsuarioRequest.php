@@ -23,39 +23,36 @@ class UpdateUsuarioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'actual_type' => [
-                'required',
-                Rule::in(['Egresado', 'Docente', 'Administrativo']),
-                function ($attribute, $value, $fail) {
-                    if ($value === 'Egresado' && !\App\Models\Egresado::find($this->input('actual_id'))) {
-                        $fail('The selected actual_id is invalid for Egresado.');
-                    } elseif ($value === 'Docente' && !\App\Models\Docente::find($this->input('actual_id'))) {
-                        $fail('The selected actual_id is invalid for Docente.');
-                    } elseif ($value === 'Administrativo' && !\App\Models\Administrativo::find($this->input('actual_id'))) {
-                        $fail('The selected actual_id is invalid for Administrativo.');
-                    }
-                },
-            ],
-            'actual_id' => 'required|integer',
-            'titulacion_opciones_id' => 'required|exists:titulacion_opciones,id',
-            'nombre_proyecto' => 'required|string|max:255',
-            'liberacion' => 'required|in:aceptado,rechazado,pendiente',
-            'status' => 'required|in:iniciado,rechazado,pendiente',
-            'paso' => 'required|in:iniciado,rechazado,pendiente',
-            'observaciones' => 'nullable|string',
-            'pago' => 'required|in:aceptado,pendiente',
-            'comite_id' => 'required|exists:comites,id',
-            'acto_id' => 'required|exists:actos,id',
+                'actual_type' => 'sometimes|string|max:255',
+                'actual_id' => 'sometimes|integer|exists:egresados,id',
+                'nombre_usuario' => 'sometimes|string|max:255|unique:usuarios,nombre_usuario',
+                'contraseña' => 'sometimes|string|min:8',
         ];
     }
 
     /**
      * Prepare the data for validation.
      */
-    protected function prepareForValidation()
+    public function messages()
     {
-        $this->merge([
-            'actual_type' => $this->input('actual_type', 'Egresado'),
-        ]);
+    return [
+            'actual_type.required' => 'El campo tipo de usuario es obligatorio.',
+            'actual_type.string' => 'El campo tipo de usuario debe ser una cadena de texto.',
+            'actual_type.max' => 'El campo tipo de usuario no debe exceder los 255 caracteres.',
+
+            'actual_id.required' => 'El campo ID de usuario es obligatorio.',
+            'actual_id.integer' => 'El campo ID de usuario debe ser un número entero.',
+            'actual_id.exists' => 'El ID de usuario proporcionado no existe en la base de datos.',
+
+            'nombre_usuario.required' => 'El campo nombre de usuario es obligatorio.',
+            'nombre_usuario.string' => 'El campo nombre de usuario debe ser una cadena de texto.',
+            'nombre_usuario.max' => 'El campo nombre de usuario no debe exceder los 255 caracteres.',
+            'nombre_usuario.unique' => 'El nombre de usuario ya está en uso.',
+
+            'contraseña.required' => 'El campo contraseña es obligatorio.',
+            'contraseña.string' => 'El campo contraseña debe ser una cadena de texto.',
+            'contraseña.min' => 'El campo contraseña debe tener al menos 8 caracteres.',
+    ];
     }
+
 }

@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TramiteController;
 use App\Http\Controllers\ValidacionSolicitudController;
 use App\Http\Controllers\EspecialidadPlanEstudioController;
-
+use App\Models\ValidacionTitulacion;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +55,8 @@ Route::apiResource("opcionesrequisitos",OpcionRequisitoController::class)->middl
 Route::apiResource("comites",ComiteController::class)->middleware('existe');
 Route::apiResource("actos",ActoController::class)->middleware('existe');
 Route::apiResource("documentotitulaciones",DocumentoTitulacionController::class)->middleware('existe');
-Route::apiResource("validaciontitulaciones",ValidacionSolicitudController::class)->middleware('existe');
+Route::apiResource("validacionsolicitudes",ValidacionSolicitudController::class)->middleware('existe');
+Route::apiResource("validaciontitulaciones",ValidacionTitulacion::class)->middleware('existe');
 Route::apiResource("administrativos",AdministrativoController::class)->middleware('existe');
 Route::apiResource("petopciones",PlanEstudiosTitulacionOpcionController::class)->middleware('existe');
 Route::apiResource("actosdocentes",ActoDocenteController::class)->middleware('existe');
