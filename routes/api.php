@@ -64,5 +64,4 @@ Route::apiResource("comitesdocentes",ComiteDocenteController::class)->middleware
 Route::apiResource("especiadadplanestudios",EspecialidadPlanEstudioController::class)->middleware('existe');
 
 
-
 #Route::apiResource("planesestudiostitulacionesopciones",PlanEstudiosTitulacionOpcionController::class)->middleware('existe');
