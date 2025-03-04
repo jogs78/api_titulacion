@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tramites', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('egresado_id')->constrained('Egresados');
+            $table->foreignID('egresado_id')->constrained('egresados');
             $table->foreignId('titulacion_opciones_id')->constrained('titulacion_opciones');
             $table->string('nombre_proyecto');
             $table->enum('liberacion',['aceptado','rechazado','pendiente'])->default('pendiente'); #Si el proyecto es aceptado o rechazado
