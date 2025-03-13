@@ -30,7 +30,7 @@ class UpdateEgresadoRequest extends FormRequest
                 'correo' => 'sometimes|email|max:255|unique:egresados,correo',
                 'telefono' => 'sometimes|nullable|string|max:15',
                 'carrera_id' => 'sometimes|integer|exists:carreras,id',
-                'plan_estudio_id' => 'sometimes|integer|exists:planes_estudio,id',
+                'plan_estudio_id' => 'sometimes|integer|exists:plan_estudios,id',
         ];
     }
 
