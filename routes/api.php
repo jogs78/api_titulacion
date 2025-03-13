@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TramiteController;
 use App\Http\Controllers\ValidacionSolicitudController;
 use App\Http\Controllers\EspecialidadPlanEstudioController;
+use App\Http\Controllers\RegistroController;
+
 use App\Models\ValidacionTitulacion;
 
 /*
@@ -41,6 +43,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('autenticar',[PuertaController::class,'autenticar']);
+Route::post('registrar',[RegistroController::class,'registrar']);
 Route::apiResource("planestudios", PlanEstudioController::class)->middleware('existe');
 Route::apiResource("usuarios", UsuarioController::class)->middleware('existe');
 Route::apiResource("tramites",TramiteController::class)->middleware('existe');

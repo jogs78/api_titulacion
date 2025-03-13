@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ComiteDocente extends Model
 {
+    protected $table = 'comite_docentes';
     public $protected = ['comite_id', 'docente_id'];
 
     public function comite()

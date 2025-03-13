@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tramite extends Model
 {
+    protected $table = 'tramites';
     protected $fillable = ['egresado_id', 'titulacion_opciones_id', 'nombre_proyecto', 'liberacion', 'status', 'paso', 'observaciones', 'observaciones', 'pago', 'comite_id', 'acto_id'];
     use HasFactory;
 
@@ -27,5 +28,5 @@ class Tramite extends Model
             return $this->belongsTo(Acto::class, 'acto_id');
         }
 
-        
+
 }

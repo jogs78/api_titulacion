@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActoDocente extends Model
 {
+    protected $table = 'acto_docentes';
     protected $fillable = ['acto_id','docente_id','sinodal'];
 
     public function acto(){

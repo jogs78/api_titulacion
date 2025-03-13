@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlanEstudio extends Model
 {
+    protected $table = 'plan_estudios';
+    
     protected $fillable = ['fecha_inicio', 'numero_creditos', 'especialidad_id'];
     use HasFactory;
+
+
 
     public function EspecialidadPlanEstudio()
     {
@@ -17,7 +21,7 @@ class PlanEstudio extends Model
 
     public function planEstudiosTitulacionOpcion()
     {
-        return $this->hasOne(PlanEstudiosTitulacionOpcion::class, 'plan_estudios_id');
+        return $this->hasOne(PlanEstudiosTitulacionOpcion::class, 'plan_estudio_id');
     }
 
     public function planRequisito()

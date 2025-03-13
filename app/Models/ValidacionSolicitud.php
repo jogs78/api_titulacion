@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ValidacionSolicitud extends Model
 {
+
     use HasFactory;
     protected $table = 'validacion_solicitudes';
 }

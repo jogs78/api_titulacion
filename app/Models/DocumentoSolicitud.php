@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DocumentoSolicitud extends Model
 {
     use HasFactory;
+
     protected $table = 'documento_solicitudes';
 
     public function planEstudios()
@@ -19,5 +20,5 @@ class DocumentoSolicitud extends Model
     {
         return $this->belongsTo(Egresado::class, 'egresado_id');
     }
-    
+
 }

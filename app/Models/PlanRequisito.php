@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlanRequisito extends Model
 {
+    protected $table = 'plan_requisitos';
     protected $fillable = ['plan_estudios_id', 'Docuemnto_requerido', 'descripcion', 'tipo'];
     use HasFactory;
 

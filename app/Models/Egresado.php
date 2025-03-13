@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Egresado extends Model
 {
+    protected $table = 'egresados';
     protected $fillable = ['nombre', 'apellido_paterno', 'apellido_materno', 'numero_control', 'correo', 'telefono', 'carrera_id','plan_estudio_id'];
     use HasFactory;
 

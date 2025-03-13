@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Acto extends Model
 {
+    protected $table = 'actos';
     protected $fillable = ['Modalidad', 'fecha', 'hora', 'lugar'];
     use HasFactory;
 

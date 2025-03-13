@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comite extends Model
 {
+    protected $table = 'comites';
     protected $fillable = ['plan_estudios_id'];
     use HasFactory;
 

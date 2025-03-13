@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class EspecialidadPlanEstudio extends Model
 {
+    protected $table = 'especialidad_plan_estudios';
     use HasFactory;
 
     public function especialidad()
