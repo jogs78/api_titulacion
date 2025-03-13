@@ -6,6 +6,7 @@ use App\Models\Egresado;
 use App\Http\Requests\StoreEgresadoRequest;
 use App\Http\Requests\UpdateEgresadoRequest;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 class EgresadoController extends Controller
 {
     /**
@@ -26,11 +27,19 @@ class EgresadoController extends Controller
      */
     public function store(StoreEgresadoRequest $request)
     {
+        Log::channel('debug')->info("quiero guardar");
+
         if (Gate::allows('create', Egresado::class)) {
             // Crear tramite
+            Log::channel('debug')->info("puedo guardar");
+
             $egresado = new Egresado();
             $datos = $request->all();
+            Log::channel('debug')->info("intento guardar");
+
             $egresado->fill($datos);
+            Log::channel('debug')->info("voy a  guardar");
+
             $egresado->save();
             return response()->json($egresado, 201);
         } else {

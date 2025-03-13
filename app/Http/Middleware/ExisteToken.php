@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Log;
 
 class ExisteToken
 {
