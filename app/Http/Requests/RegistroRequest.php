@@ -30,7 +30,7 @@ class RegistroRequest extends FormRequest
                 'correo' => 'required|email|max:255|unique:egresados,correo',
                 'telefono' => 'nullable|string|max:15',
                 'carrera_id' => 'required|integer|exists:carreras,id',
-                'plan_estudios_id' => 'required|integer|exists:planes_estudio,id',
+                'plan_estudio_id' => 'required|integer|exists:plan_estudios,id',
 
                 //Usuario
 
