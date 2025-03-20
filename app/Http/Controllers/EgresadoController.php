@@ -27,18 +27,18 @@ class EgresadoController extends Controller
      */
     public function store(StoreEgresadoRequest $request)
     {
-        Log::channel('debug')->info("quiero guardar");
+        //Log::channel('debug')->info("quiero guardar");
 
         if (Gate::allows('create', Egresado::class)) {
             // Crear tramite
-            Log::channel('debug')->info("puedo guardar");
+            //Log::channel('debug')->info("puedo guardar");
 
             $egresado = new Egresado();
             $datos = $request->all();
-            Log::channel('debug')->info("intento guardar");
+            //Log::channel('debug')->info("intento guardar");
 
             $egresado->fill($datos);
-            Log::channel('debug')->info("voy a  guardar");
+            //Log::channel('debug')->info("voy a  guardar");
 
             $egresado->save();
             return response()->json($egresado, 201);
@@ -70,11 +70,11 @@ class EgresadoController extends Controller
 
             // Actualizar relaciones si es necesario
             $egresado->fill($datos);
-            $egresado->load('carrera_id', 'plan_estudios_id'); // Cargar relaciones necesarias
+            //$egresado->load('carrera_id', 'plan_estudios_id'); // Cargar relaciones necesarias (Produce errores cuando no hay relaciones anteriormente cargadas)
 
             $egresado->save();
 
-            return response()->json($egresado);
+            return response()->json($egresado, 200);
         } else {
             return response()->json(['message' => 'No tienes permisos para actualizar este trámite'], 403);
         }

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string("numero_control");
             $table->string("correo");
             $table->string("telefono");
-            $table->foreignId("carrera_id")->constrained("carreras");
-            $table->foreignId("plan_estudio_id")->constrained("plan_estudios");
+            $table->foreignId("carrera_id")->nullable()->constrained("carreras");
+            $table->foreignId("plan_estudio_id")->nullable()->constrained("plan_estudios");
             $table->timestamps();
         });
     }

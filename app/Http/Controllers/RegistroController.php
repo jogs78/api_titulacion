@@ -26,8 +26,8 @@ class RegistroController extends Controller
                     'numero_control'     => $validaData['numero_control'],
                     'correo'             => $validaData['correo'],
                     'telefono'           => $validaData['telefono'],
-                    'carrera_id'         => $validaData['carrera_id'],
-                    'plan_estudio_id'    => $validaData['plan_estudio_id'],
+                    'carrera_id'         => null,
+                    'plan_estudio_id'    => null,
                 ]);
 
                 // Crear usuario vinculado al egresado

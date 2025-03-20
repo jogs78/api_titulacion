@@ -26,9 +26,9 @@ class UpdateEgresadoRequest extends FormRequest
                 'nombre' => 'sometimes|string|max:255',
                 'apellido_paterno' => 'sometimes|string|max:255',
                 'apellido_materno' => 'sometimes|nullable|string|max:255',
-                'numero_control' => 'sometimes|string|max:20|unique:egresados,numero_control',
-                'correo' => 'sometimes|email|max:255|unique:egresados,correo',
-                'telefono' => 'sometimes|nullable|string|max:15',
+                'numero_control' => 'sometimes|string|max:20|',
+                'correo' => 'sometimes|email|max:255|',
+                'telefono' => 'sometimes|nullable|string|max:10',
                 'carrera_id' => 'sometimes|integer|exists:carreras,id',
                 'plan_estudio_id' => 'sometimes|integer|exists:plan_estudios,id',
         ];
@@ -46,17 +46,23 @@ class UpdateEgresadoRequest extends FormRequest
             'apellido_materno.string' => 'El apellido materno debe ser una cadena de texto',
             'apellido_materno.max' => 'El apellido materno no debe exceder los 255 caracteres',
 
-            'cedula_profesional.string' => 'La cédula profesional debe ser una cadena de texto',
-            'cedula_profesional.max' => 'La cédula profesional no debe exceder los 20 caracteres',
-            'cedula_profesional.unique' => 'La cédula profesional ya está registrada',
+            'numero_control.string' => 'El numero de control debe ser una cadena de texto',
+            'numero_control.max' => 'El numero de control no debe exceder los 20 caracteres',
+            //'numero_control.unique' => 'El numero de control ya está registrada',
 
             'correo.string' => 'El correo debe ser una cadena de texto',
             'correo.email' => 'El correo debe ser una dirección de correo electrónico válida',
             'correo.max' => 'El correo no debe exceder los 255 caracteres',
-            'correo.unique' => 'El correo ya está registrado',
+            //'correo.unique' => 'El correo ya está registrado',
+            'telefono.string' => 'El teléfono debe ser una cadena de texto',
+            'telefono.max' => 'El teléfono no debe exceder los 10 caracteres',
 
-            'profesion.string' => 'La profesión debe ser una cadena de texto',
-            'profesion.max' => 'La profesión no debe exceder los 255 caracteres',
+            'carrera_id.integer' => 'La carrera debe ser un número entero',
+            'carrera_id.exists' => 'La carrera seleccionada no es válida',
+
+            'plan_estudio_id.integer' => 'El plan de estudio debe ser un número entero',
+            'plan_estudio_id.exists' => 'El plan de estudio seleccionado no es válido',
+
     ];
     }
 

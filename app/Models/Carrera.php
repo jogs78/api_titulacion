@@ -10,4 +10,9 @@ class Carrera extends Model
     protected $table = 'carreras';
     protected $fillable = ['nombre', 'clave'];
     use HasFactory;
+
+    public function egresados()
+    {
+        return $this->hasMany(Egresado::class, 'carrera_id');
+    }
 }

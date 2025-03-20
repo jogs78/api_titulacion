@@ -29,8 +29,8 @@ class RegistroRequest extends FormRequest
                 'numero_control' => 'required|string|max:20|unique:egresados,numero_control',
                 'correo' => 'required|email|max:255|unique:egresados,correo',
                 'telefono' => 'nullable|string|max:15',
-                'carrera_id' => 'required|integer|exists:carreras,id',
-                'plan_estudio_id' => 'required|integer|exists:plan_estudios,id',
+                //'carrera_id' => 'required|integer|exists:carreras,id',
+                //'plan_estudio_id' => 'required|integer|exists:plan_estudios,id',
 
                 //Usuario
 
@@ -74,13 +74,13 @@ class RegistroRequest extends FormRequest
         'telefono.string' => 'El teléfono debe ser una cadena de texto',
         'telefono.max' => 'El teléfono no debe exceder los 15 caracteres',
 
-        'carrera_id.required' => 'La carrera es requerida',
-        'carrera_id.integer' => 'La carrera debe ser un número entero',
-        'carrera_id.exists' => 'La carrera seleccionada no existe',
+        //'carrera_id.required' => 'La carrera es requerida',
+        //'carrera_id.integer' => 'La carrera debe ser un número entero',
+        //'carrera_id.exists' => 'La carrera seleccionada no existe',
 
-        'plan_estudios_id.required' => 'El plan de estudios es requerido',
-        'plan_estudios_id.integer' => 'El plan de estudios debe ser un número entero',
-        'plan_estudios_id.exists' => 'El plan de estudios seleccionado no existe',
+        //'plan_estudios_id.required' => 'El plan de estudios es requerido',
+        //'plan_estudios_id.integer' => 'El plan de estudios debe ser un número entero',
+        //'plan_estudios_id.exists' => 'El plan de estudios seleccionado no existe',
 
         //Usuario
         //'actual_type.required' => 'El campo tipo de usuario es obligatorio.',
