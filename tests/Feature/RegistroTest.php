@@ -10,13 +10,11 @@ use Tests\TestCase;
 
 class RegistroTest extends TestCase
 {
-
+    
     // Vaciar la base de datos y ejecutar migraciones y seeders porque luego los datos de prueba no se insertan
     protected function setUp(): void
     {
         parent::setUp();
-
-
         Artisan::call('migrate:fresh');
         Artisan::call('db:seed');
     }
@@ -54,13 +52,16 @@ class RegistroTest extends TestCase
         $planEstudio = 1;
 
         // Actualiza los datos del egresado para que tenga su carrera y plan de estudios
+
+        //echo route('egresados.update',$egresado);
+
         $ActulizaEgresado = $this->withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->putJson('/api/egresado/' . $egresado, [
+        ])->putJson('/api/egresados/'.$egresado, [ // era /api/egresados/{egresado} route('egresados.update'
             'carrera_id' => $carrera,
             'plan_estudio_id' => $planEstudio
         ]);
-        dd($ActulizaEgresado);
+        //dd($ActulizaEgresado);
         $ActulizaEgresado->assertStatus(200)->assertJson(['carrera_id' => 1, 'plan_estudio_id' => 1]);
 
         //Concluye el registro del egresado con pasos extras porque hay datos protegidos
