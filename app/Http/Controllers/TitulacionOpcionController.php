@@ -45,11 +45,12 @@ class TitulacionOpcionController extends Controller
     public function show(TitulacionOpcion $titulacionOpcion)
     {
         if (Gate::allows('view', $titulacionOpcion)) {
+            
             return response()->json($titulacionOpcion);
         } else {
             return response()->json(['error' => 'No autorizado'], 403);
         }
-        $data = TitulacionOpcion::find($titulacionOpcion);
+
     }
 
     /**

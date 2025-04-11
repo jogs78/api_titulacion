@@ -22,7 +22,17 @@ class UpdateDocumentoTitulacionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'archivo' => 'file|mimes:pdf|max:5120',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'archivo.file' => 'El archivo debe ser un archivo válido.',
+            'archivo.mimes' => 'El archivo debe ser de tipo PDF.',
+            'archivo.max' => 'El archivo no debe ser mayor a 5 MB.',
+
         ];
     }
 }

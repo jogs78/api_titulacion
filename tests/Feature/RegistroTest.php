@@ -10,9 +10,9 @@ use Tests\TestCase;
 
 class RegistroTest extends TestCase
 {
-    
+
     // Vaciar la base de datos y ejecutar migraciones y seeders porque luego los datos de prueba no se insertan
-    protected function setUp(): void
+   protected function setUp(): void
     {
         parent::setUp();
         Artisan::call('migrate:fresh');
@@ -38,35 +38,40 @@ class RegistroTest extends TestCase
         $response->assertStatus(201);
 
         // Autenticar usuario y obtener su token e id
-        $loginResponse = $this->postJson('/api/autenticar', [
+        $autenticar = $this->postJson('/api/autenticar', [
             'usuario' => 'arturo',
             'contraseña' => '12345678']);
-            //dd($loginResponse);
-        $loginResponse->assertStatus(200)->assertJsonStructure(['token','id']);
+            $autenticar ->assertStatus(200)->assertJsonStructure(['token','id']);
 
-        $token = $loginResponse->json('token');
-        $egresado = $loginResponse->json('id');
+        $token = $autenticar ->json('token'); // cabezera para utenticar usuarios
+        $egresado = $autenticar ->json('id'); // id del usuario autenticado
 
+        // Consultar las carreras y planes de estudio para obtener sus id esto como si tuviera que seleccionar una carrera y plan de estudios en el frontend
+        $consultaCarrera = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+        ])->getJson('/api/carreras');
+        $consultaCarrera->assertStatus(200);
+
+        $consultaPlanEstudio = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+        ])->getJson('/api/planestudios');
+        $consultaPlanEstudio->assertStatus(200);
         // Esto seria despues de consultar las carreras y planes de estudio porque estan protegidos
         $carrera = 1;
         $planEstudio = 1;
 
         // Actualiza los datos del egresado para que tenga su carrera y plan de estudios
-
-        //echo route('egresados.update',$egresado);
-
-        $ActulizaEgresado = $this->withHeaders([
+        $actulizaEgresado = $this->withHeaders([
             'Authorization' => 'Bearer ' . $token,
         ])->putJson('/api/egresados/'.$egresado, [ // era /api/egresados/{egresado} route('egresados.update'
             'carrera_id' => $carrera,
             'plan_estudio_id' => $planEstudio
         ]);
-        //dd($ActulizaEgresado);
-        $ActulizaEgresado->assertStatus(200)->assertJson(['carrera_id' => 1, 'plan_estudio_id' => 1]);
+       
+        $actulizaEgresado->assertStatus(200)->assertJson(['carrera_id' => 1, 'plan_estudio_id' => 1]);
 
         //Concluye el registro del egresado con pasos extras porque hay datos protegidos
         //el front necesita autenticar para consultar la informacion
     }
-
 
 }

@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Tests\\Feature\\RegistroTest::registro_usuario":7},"times":{"Tests\\Unit\\ExampleTest::test_that_true_is_true":0.004,"Tests\\Feature\\ExampleTest::test_the_application_returns_a_successful_response":0.032,"Tests\\Feature\\RegistroTest::registro_usuario":0.064}}
+{"version":1,"defects":{"Tests\\Feature\\RegistroTest::registro_usuario":7,"Tests\\Feature\\TramiteTest::gestion_tramite":7},"times":{"Tests\\Feature\\RegistroTest::registro_usuario":0.067,"Tests\\Feature\\TramiteTest::gestion_tramite":0.079}}

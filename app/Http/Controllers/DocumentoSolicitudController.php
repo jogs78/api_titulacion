@@ -28,24 +28,35 @@ class DocumentoSolicitudController extends Controller
      */
     public function store(StoreDocumentoSolicitudRequest $request)
     {
-        if (Gate::allows('create', DocumentoSolicitud::class)) {
-            if (is_null($request->file('archivo'))) {
-                return response()->json(['error' => 'No se ha cargado documento'], 403);
-            }else {
-                $nombre_guardar =rand(1, 1000) . $request->file('archivo')->getClientOriginalName();
-                $request->file('archivo')->storeAs('',$nombre_guardar, 'privadas');
-
-                $documento = new DocumentoSolicitud();
-                $documento->nombre = $request->file('archivo')->getClientOriginalName();
-                $documento->ruta = $nombre_guardar;
-                $egresado = auth()->user();
-                $documento->egresado_id = $egresado->id;
-                $documento->plan_estudio_id = $egresado->planEstudio->id;
-                $documento->save();
-            }
-        } else {
+        //dd($request->all()); // Ver qué datos está recibiendo Laravel
+        if (!Gate::allows('create', DocumentoSolicitud::class)) {
             return response()->json(['error' => 'No autorizado'], 403);
         }
+
+        if (!$request->hasFile('archivo')) {
+            return response()->json(['error' => 'No se ha cargado documento'], 422);
+        }
+
+        $egresado = auth()->user();
+        if (!$egresado) {
+            return response()->json(['error' => 'Usuario no autenticado'], 401);
+
+        }
+
+
+
+        $nombre_guardar = rand(1, 1000) . $request->file('archivo')->getClientOriginalName();
+        $request->file('archivo')->storeAs('', $nombre_guardar, 'privadas');
+
+        $documento = new DocumentoSolicitud();
+        $documento->nombre = $request->file('archivo')->getClientOriginalName();
+        $documento->ruta = $nombre_guardar;
+        $egresado = $egresado->actual;
+        $documento->egresado_id = $egresado->id;
+        $documento->plan_estudios_id = $egresado->plan_estudio_id;
+        $documento->save();
+
+        return response()->json($documento, 201);
     }
 
     /**
@@ -86,3 +97,4 @@ class DocumentoSolicitudController extends Controller
         }
     }
 }
+

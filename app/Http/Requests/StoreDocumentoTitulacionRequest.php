@@ -22,7 +22,17 @@ class StoreDocumentoTitulacionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+             'archivo' => 'required|file|mimes:pdf|max:5120', // 5mb
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'archivo.required' => 'El archivo es obligatorio.',
+            'archivo.file' => 'El archivo debe ser un archivo válido.',
+            'archivo.mimes' => 'El archivo debe ser de tipo PDF.',
+            'archivo.max' => 'El archivo no debe ser mayor a 5 MB.',
         ];
     }
 }
